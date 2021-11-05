@@ -12,7 +12,7 @@ create TABLE DoiTac
 	Quan NVARCHAR(50),
 	SoChiNhanh INT,
 	SoLuongDonHangMoiNgay INT,
-	LoaiHangVanChuyen INT,
+	LoaiHangVanChuyen NVARCHAR(50),
 	DiaChiKinhDoanh NVARCHAR(50),
 	SDT VARCHAR(50),
 	Email VARCHAR(50)
@@ -119,6 +119,16 @@ CREATE TABLE DHSP
 	SoLuong INT,
 	Gia INT,
 )
+CREATE TABLE TaiKhoan
+(
+	MaNguoidung VARCHAR(10) PRIMARY KEY,
+	TenDangNhap VARCHAR(50) UNIQUE,
+	MatKhau VARCHAR(50),
+	LoaiNguoiDung int,
+	TinhTrang NVARCHAR(50),
+	CHECK (TinhTrang IN(N'Khoá', N'Mở')),
+	CHECK (LoaiNguoiDung IN(1,2,3,4,5))
+)
 --------------------------------------Foreign key-----------------------------------------
 GO 
 ALTER TABLE dbo.DonHang
@@ -160,7 +170,6 @@ ALTER TABLE dbo.DHSP
 ADD CONSTRAINT FK_DHSP_SP
 FOREIGN KEY (MaSP)
 REFERENCES dbo.SanPham(MaSP)
-
 ----------------------------------------Trigger-------------------------------------------
 -- Thêm, chỉnh chi nhánh. mỗi đối tác có ghi số lượng chi nhánh khi đăng ký
 GO 
@@ -218,5 +227,19 @@ BEGIN
 	END
 END
 
-
+--------------------------------------Transaction----------------------------------------
+GO
+CREATE PROC TaiDangKyHoaDon
+@mahopdong VARCHAR(5), @thoigian DATE, @phantramhoahong FLOAT
+AS
+BEGIN TRAN
+    IF @mahopdong NOT IN (SELECT dbo.HopDong.MaHopDong FROM dbo.HopDong)
+    BEGIN
+        PRINT 'Hoa Don Nay Khong Ton Tai'
+        ROLLBACK TRAN
+        RETURN
+    END
+    UPDATE dbo.HopDong SET ThoiGianHieuLuc = @thoigian WHERE MaHopDong = @mahopdong
+    UPDATE dbo.HopDong SET @phantramhoahong = @phantramhoahong WHERE MaHopDong = @mahopdong
+COMMIT TRAN
 
