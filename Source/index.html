@@ -6,12 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Favicon -->
         <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-
-        <!-- Bootstrap & Box icons -->
-        <link 
-            rel="stylesheet" 
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css"
-        />
+        <!-- Box icons -->
         <link 
             href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' 
             rel='stylesheet'
@@ -51,24 +46,34 @@
                     
                         <!-- Nav List -->
                         <ul class="nav-list">
-                            <li class="nav-item">
-                                <a href="#home" class="nav-link">Home</a>
+                            <li class="nav-home">
+                                <a href="index.html" class="nav-link">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#register" class="nav-link">Register</a>
-                                <i class='bx bxs-chevron-down'></i>
+                            <li class="nav-register-dropdown">
+                                <a href="register" class="nav-link">Be Our Partner</a>
                                 <!-- Sub menu -->
-                                <ul class="register-sub-menu">
-
+                                <ul class="register-dropdown-content">
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Customer</a></li>
+                                    <li><a href="#">Driver</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="#home" class="nav-link">Home</a>
+                            <li class="nav-login-dropdown">
+                                <a href="#login" class="nav-link">Log in</a>
+                                <!-- Sub menu -->
+                                <ul class="login-dropdown-content">
+                                    <li><a href="#">Staff</a></li>
+                                    <li><a href="#">Business</a></li>
+                                    <li><a href="#">Customer</a></li>
+                                    <li><a href="#">Driver</a></li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            <!-- Image -->
+            <img src="./images/homepage.jpg" class="homepage-img" alt=""/>
         </header>
         <!-- GSAP - Animations -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
