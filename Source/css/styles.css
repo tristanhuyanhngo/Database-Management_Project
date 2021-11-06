@@ -1,0 +1,106 @@
+*,
+*::before, /*Research*/
+*::after {
+    margin:0;
+    padding:0;
+    box-sizing: inherit; /*Research*/
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    background-color: #fff;
+    color: #243a6f;
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 500;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+li {
+    list-style-type: none; /*Research*/
+}
+
+.container {
+    max-width: 120rem; /*Research rem*/
+    margin: 0 auto;
+}
+
+.container-md {
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) { /*Research*/
+    .container {
+        padding: 0 3rem;
+    }
+    .container-md {
+        padding: 0 3rem;
+    }
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d1e2e9;
+    overflow: hidden; 
+}
+
+.nav {
+    padding: 1.6rem 0;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo h1 {
+    font-size: 2.5rem;
+}
+
+.top-nav {
+    display: none;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item:not(:last-child){ /*Research*/
+    margin-right: 0.5rem;
+}
+
+.nav-link:link,
+.nav-link:visited {
+    padding: 0.8rem 1rem;
+    transition: all 300ms ease-in-out; /*Research*/
+}
+
+.nav-link.icon {
+    font-size: 3rem;
+}
