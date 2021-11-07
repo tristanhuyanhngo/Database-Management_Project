@@ -34,16 +34,16 @@ a {
 }
 
 img {
-    max-width: 80%;
+    max-width: 70%;
 }
 
-/*Background Image*/
 .homepage-img {
     position: absolute;
-    height: 70rem;
-    right: 12%;
+    right: 15%;
     object-fit: contain;
 }
+/*__________________________________________________________________________________________________________*/
+/*Home Page*/
 
 li {
     list-style-type: none; /*Research*/
@@ -148,35 +148,5 @@ li {
     display: block;
 }
 
-.nav-login-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.login-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #d1e2e9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.login-dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.login-dropdown-content a:hover {
-    background-color: #bcd9fa;
-}
-
-/* Show the dropdown menu on hover */
-.nav-login-dropdown:hover .login-dropdown-content {
-    display: block;
-}
+/*__________________________________________________________________________________________________________*/
+/*Log In*/
