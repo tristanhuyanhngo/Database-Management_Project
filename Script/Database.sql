@@ -26,7 +26,14 @@ create TABLE HopDong
 	PhanTramHoaHong FLOAT,
 	ThoiGianHieuLuc DATE,
 	TinhTrang NVARCHAR(50),
-	CHECK (TinhTrang IN (N'Đã duyệt', N'Chờ duyệt'))
+	CHECK (TinhTrang IN (N'Đã duyệt', N'Chờ duyệt', N'Huỷ'))
+)
+
+create TABLE ChiTietHopDong
+(
+	MaHopDong VARCHAR(10),
+	MaChiNhanh VARCHAR(10),
+	PRIMARY KEY(MaHopDong,MaChiNhanh)
 )
 
 create TABLE DonHang
@@ -119,6 +126,7 @@ CREATE TABLE DHSP
 	SoLuong INT,
 	Gia INT,
 )
+
 CREATE TABLE TaiKhoan
 (
 	MaNguoidung VARCHAR(10) PRIMARY KEY,
@@ -170,6 +178,16 @@ ALTER TABLE dbo.DHSP
 ADD CONSTRAINT FK_DHSP_SP
 FOREIGN KEY (MaSP)
 REFERENCES dbo.SanPham(MaSP)
+
+ALTER TABLE dbo.ChiTietHopDong
+ADD CONSTRAINT FK_CTHD_HD
+FOREIGN KEY (MaHopDong)
+REFERENCES dbo.HopDong(MaHopDong)
+
+ALTER TABLE dbo.ChiTietHopDong
+ADD CONSTRAINT FK_CTHD_CN
+FOREIGN KEY (MaChiNhanh)
+REFERENCES dbo.ChiNhanh(MaChiNhanh)
 ----------------------------------------Trigger-------------------------------------------
 -- Thêm, chỉnh chi nhánh. mỗi đối tác có ghi số lượng chi nhánh khi đăng ký
 GO 

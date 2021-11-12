@@ -85,6 +85,13 @@ SELECT dh.TenDonHang, dh.TinhTrang, dh.PhiSanPham, dh.PhiVanChuyen, dh.MaTaiXe
 FROM dbo.KhachHang kh, dbo.TaiKhoan tk, dbo.DonHang dh
 WHERE tk.TenDangNhap = CURRENT_USER AND kh.MaKhachHang = tk.MaNguoiDung AND dh.MaKhachHang = kh.MaKhachHang
 
+GO
+CREATE VIEW UV_CTHD
+AS
+SELECT cn.*
+FROM dbo.DoiTac dt, dbo.TaiKhoan tk, dbo.ChiTietHopDong cthd, dbo.HopDong hd, dbo.ChiNhanh cn
+WHERE tk.TenDangNhap = CURRENT_USER AND dt.MaSoThue = tk.MaNguoiDung
+AND cthd.MaHopDong = hd.MaHopDong AND dt.MaSoThue = hd.MaSoThue AND cn.MaChiNhanh = cthd.MaChiNhanh
 ------------------------------------Cấp quyền cho quản trị viên-----------------------------------------
 Go
 ALTER AUTHORIZATION ON SCHEMA::db_accessadmin TO quantri
@@ -110,6 +117,7 @@ GRANT SELECT ON dbo.UV_DHDT TO doitac
 GRANT DELETE,INSERT,UPDATE ON dbo.UV_CNDT TO doitac
 GRANT INSERT,UPDATE ON dbo.UV_HDDT TO doitac
 GRANT SELECT,UPDATE  ON dbo.UV_DT TO doitac
+GRANT SELECT,DELETE,UPDATE,INSERT  ON UV_CTHD TO doitac
 
 ------------------------------------Cấp quyền cho Khách Hàng-----------------------------------------
 GRANT SELECT ON dbo.DoiTac (TenDoiTac,NguoiDaiDien,SDT,ThanhPho,DiaChiKinhDoanh,Email,LoaiHangVanChuyen) TO khachhang
