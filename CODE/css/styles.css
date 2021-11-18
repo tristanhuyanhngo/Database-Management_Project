@@ -150,3 +150,52 @@ li {
 
 /*__________________________________________________________________________________________________________*/
 /*Log In*/
+
+/*__________________________________________________________________________________________________________*/
+/*Partner_manager*/
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Roboto Light', sans-serif;
+    text-align: center;
+}
+
+.content-table thead tr {
+    background-color: #d1e2e9;
+    color: black;
+    text-align: left;
+}
+
+.content-table th{
+    padding: 12px 15px;
+    font-weight: bold;
+}
+.content-table td{
+    padding: 12px 15px;
+    font-weight: lighter;
+    color: #525252;
+}
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.content-table tbody td button{
+    background: none;
+}
+.panel{
+    margin: 50px;
+    padding: 30px;
+    position: relative;
+    background: white center;
+}
+.panel h1{
+    text-align: center;
+}
+.flex{
+    display: flex;
+}
+
