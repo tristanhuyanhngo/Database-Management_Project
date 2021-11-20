@@ -163,14 +163,12 @@ li {
     font-family: 'Roboto Light', sans-serif;
     text-align: center;
     width: auto;
-    display: block;
-
+    position: relative;
 }
 
 .content-table thead tr {
     background-color: #d1e2e9;
     color: black;
-    text-align: left;
 }
 
 .content-table th{
@@ -194,6 +192,9 @@ li {
 }
 .panel h1{
     text-align: center;
+}
+.style-table{
+    flow: left
 }
 .flex{
     width: 100%;
