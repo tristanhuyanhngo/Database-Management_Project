@@ -155,14 +155,16 @@ li {
 /*Partner_manager*/
 .content-table {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 25px 0px;
     font-size: 0.9em;
-    min-width: 400px;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     font-family: 'Roboto Light', sans-serif;
     text-align: center;
+    width: auto;
+    display: block;
+
 }
 
 .content-table thead tr {
@@ -183,19 +185,31 @@ li {
 .content-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
-.content-table tbody td button{
-    background: none;
-}
 .panel{
-    margin: 50px;
-    padding: 30px;
-    position: relative;
-    background: white center;
+    margin: 30px;
+    padding: 50px;
+    width: 50%;
+    box-sizing: border-box;
+    background: white;
 }
 .panel h1{
     text-align: center;
 }
 .flex{
+    width: 100%;
+    height: auto;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+@media screen and (max-width: 1200px){
+    .panel{
+        width: 50%;
+    }
 }
 
+@media screen and (max-width: 600px){
+    .panel{
+        width: 50%;
+    }
+}
