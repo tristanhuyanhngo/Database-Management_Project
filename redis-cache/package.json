@@ -1,0 +1,24 @@
+{
+  "name": "redis-cache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "start": "node --experimental-modules src/index.mjs",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.1.0",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "cookie-parser": "^1.4.6",
+    "http-errors": "^1.8.1"
+  }
+}
