@@ -1,6 +1,6 @@
 ﻿DECLARE @RT INT
---EXEC @RT = SP_DatHang 'DT01','KH01','DH5',N'Gia Lai'
-EXEC @RT = SP_DatHang 'DT01','KH01','DH10',N'Gia Lai'
+--EXEC @RT = SP_DatHang '1','1','5',N'Gia Lai'
+EXEC @RT = SP_DatHang '1','1','10',N'Gia Lai'
 IF @RT = 1
 	PRINT N'Thêm THất bại'
 ELSE

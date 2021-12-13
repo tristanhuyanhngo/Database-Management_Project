@@ -1,6 +1,6 @@
 ﻿--Xem và đặt đơn hàng
 DECLARE @RT INT
-EXEC @RT = SP_XemNhanDonHang 'TX02','115','TP.HCM'
+EXEC @RT = SP_XemNhanDonHang '2','115','TP.HCM'
 IF @RT = 1
 	PRINT N'NHẬN ĐƠN HÀNG THẤT BẠI'
 ELSE

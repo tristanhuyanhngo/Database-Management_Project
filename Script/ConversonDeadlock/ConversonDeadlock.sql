@@ -1,5 +1,5 @@
 ﻿CREATE PROC SP_XemNhanDonHang
-	@MaTaiXe varchar(10), @MaDonHang varchar(10), @KhuVuc nvarchar(50)
+	@MaTaiXe int,  @MaDonHang int, @KhuVuc nvarchar(50)
 AS
 SET TRAN ISOLATION LEVEL SERIALIZABLE
 BEGIN TRAN

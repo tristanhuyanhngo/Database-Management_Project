@@ -1,6 +1,6 @@
 ﻿CREATE PROC SP_ThemSanPham(
-	@MaSP varchar(10),
-	@MaChiNhanh varchar(10),
+	@MaSP int, 
+	@MaChiNhanh int, 
 	@SoLuongTon int,
 	@GiaCa int,
 	@TenSP varchar(50))
@@ -33,14 +33,14 @@ COMMIT TRAN
 RETURN 0
 GO
 CREATE PROC SP_XemSanPham
-	@MaSoThue varchar(10)
+	@MaSoThue int
 AS
 --SET TRAN ISOLATION LEVEL READ UNCOMMITED
 BEGIN TRAN
 	BEGIN TRY
 		IF NOT EXISTs(select * from DoiTac where @MaSoThue = MaSoThue)
 			BEGIN
-				PRINT N'Đối tác ' + CAST(@MaSoThue AS VARCHAR(10)) + N' không tồn tại'
+				PRINT N'Đối tác ' + CAST(@MaSoThue AS int) + N' không tồn tại'
 				ROLLBACK TRAN
 				RETURN 1
 			END

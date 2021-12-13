@@ -1,5 +1,5 @@
 ﻿CREATE PROC SP_ThongBao_HopDong_fix
-	@MaHopDong varchar(10), @NoiDung nvarchar(50), @MaSoThue varchar(10), @MaThongBao varchar(10), @ThoiHan date
+	@MaHopDong int,  @NoiDung nvarchar(50), @MaSoThue int,  @MaThongBao int,  @ThoiHan date
 AS
 BEGIN TRAN
 	BEGIN TRY
@@ -24,7 +24,7 @@ COMMIT TRAN
 GO
 
 CREATE PROC SP_LapHopDong_DocThongBao_fix
-	@MaHopDong varchar(10), @MaSoThue varchar(10)
+	@MaHopDong int,  @MaSoThue int
 AS
 BEGIN TRAN
 	BEGIN TRY

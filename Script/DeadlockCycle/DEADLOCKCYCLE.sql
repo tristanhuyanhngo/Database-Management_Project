@@ -1,5 +1,5 @@
 ﻿CREATE PROC SP_ThongBao_HopDong
-	@MaHopDong varchar(10), @NoiDung nvarchar(50), @MaSoThue varchar(10), @MaThongBao varchar(10), @ThoiHan date
+	@MaHopDong int, @NoiDung nvarchar(50), @MaSoThue int,  @MaThongBao int,  @ThoiHan date
 AS
 SET TRAN ISOLATION LEVEL serializable
 BEGIN TRAN
@@ -25,7 +25,7 @@ COMMIT TRAN
 GO
 
 CREATE PROC SP_LapHopDong_DocThongBao	
-	@MaHopDong varchar(10), @MaSoThue varchar(10)
+	@MaHopDong int,  @MaSoThue int
 AS
 SET TRAN ISOLATION LEVEL serializable
 BEGIN TRAN

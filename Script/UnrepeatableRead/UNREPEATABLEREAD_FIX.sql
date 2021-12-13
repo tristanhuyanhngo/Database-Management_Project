@@ -22,7 +22,7 @@ COMMIT TRAN
 go
 --drop proc SP_GiaHanHopDong_fix
 CREATE PROC SP_GiaHanHopDong_fix
-	@MaHopDong varchar(10), @new date
+	@MaHopDong int,  @new date
 AS
 SET TRAN ISOLATION LEVEL Repeatable Read
 BEGIN TRAN

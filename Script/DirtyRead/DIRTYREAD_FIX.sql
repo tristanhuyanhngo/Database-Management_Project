@@ -1,12 +1,12 @@
 ﻿
 CREATE PROC SP_DatHang_fix
-	@MaSoThue varchar(10), @MaKhachHang varchar(10), @MaDonHang varchar(10), @KhuVuc nvarchar(50)
+	@MaSoThue int,  @MaKhachHang int,  @MaDonHang int,  @KhuVuc nvarchar(50)
 AS
 SET TRAN ISOLATION LEVEL REPEATABLE READ
 BEGIN TRAN
 	IF NOT EXISTS(select * from DoiTac where MaSoThue = @MaSoThue)
 		BEGIN
-			PRINT N'Đối tác' + CAST(@MaSoThue AS VARCHAR(10)) + N' Không Tồn Tại'
+			PRINT N'Đối tác' + CAST(@MaSoThue AS int) + N' Không Tồn Tại'
 			ROLLBACK TRAN
 			RETURN 1
 		END

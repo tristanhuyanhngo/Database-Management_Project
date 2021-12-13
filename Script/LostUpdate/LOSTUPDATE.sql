@@ -1,5 +1,5 @@
 ﻿CREATE PROC SP_NhanDonHang
-	@MaTaiXe varchar(10), @MaDonHang varchar(10)
+	@MaTaiXe int,  @MaDonHang int
 AS
 --SET TRAN ISOLATION LEVEL REPEATABLE READ
 BEGIN TRAN

@@ -5,7 +5,7 @@ GO
 --------------------------------------Create table ---------------------------------------
 create TABLE DoiTac
 (
-	MaSoThue VARCHAR(10) PRIMARY KEY,
+	MaSoThue int PRIMARY KEY identity,
 	TenDoitac NVARCHAR(50),
 	NguoiDaiDien NVARCHAR(50),
 	ThanhPho NVARCHAR(50),
@@ -20,25 +20,26 @@ create TABLE DoiTac
 
 create TABLE HopDong
 (
-	MaHopDong VARCHAR(10) PRIMARY KEY,
-	MaSoThue VARCHAR(10) NOT NULL,
+	MaHopDong int PRIMARY KEY identity,
+	MaSoThue int NOT NULL,
 	SoChiNhanhDangKy INT,
 	PhanTramHoaHong FLOAT,
 	ThoiGianHieuLuc DATE,
 	TinhTrang NVARCHAR(50),
-	CHECK (TinhTrang IN (N'Đã duyệt', N'Chờ duyệt', N'Huỷ'))
+	CHECK (TinhTrang IN (N'Đã duyệt', N'Chờ duyệt', N'Huỷ')),
+	CHECK (PhanTramHoaHong >= 0 and PhanTramHoaHong<=100)
 )
 
 create TABLE ChiTietHopDong
 (
-	MaHopDong VARCHAR(10),
-	MaChiNhanh VARCHAR(10),
+	MaHopDong int,
+	MaChiNhanh int,
 	PRIMARY KEY(MaHopDong,MaChiNhanh)
 )
 
 create TABLE DonHang
 (
-	MaDonHang VARCHAR(10) PRIMARY KEY,
+	MaDonHang int PRIMARY KEY identity,
 	TenDonHang NVARCHAR(50),
 	NgayDat DATE,
 	TinhTrang NVARCHAR(50),
@@ -47,15 +48,16 @@ create TABLE DonHang
 	PhiSanPham INT,
 	HinhThucThanhToan NVARCHAR(50),
 	DiaChiGiaoHang NVARCHAR(50),
-	MaKhachHang VARCHAR(10) NOT NULL,
-	MaSoThue VARCHAR(10) NOT NULL,
-	MaTaiXe VARCHAR(10),
-	CHECK (TinhTrang IN (N'Đã giao', N'Đang giao',N'Chờ'))
+	MaKhachHang int NOT NULL,
+	MaSoThue int NOT NULL,
+	MaTaiXe int,
+	CHECK (TinhTrang IN (N'Đã giao', N'Đang giao',N'Chờ')),
+	CHECK (HinhThucThanhToan IN (N'COD', N'VISA',N'MOMO'))
 )
 
 create TABLE KhachHang
 (
-	MaKhachHang VARCHAR(10) PRIMARY KEY,
+	MaKhachHang int PRIMARY KEY identity,
 	HoTen NVARCHAR(50),
 	SDT VARCHAR(50),
 	DiaChi NVARCHAR(50),
@@ -64,7 +66,7 @@ create TABLE KhachHang
 
 CREATE TABLE TaiXe
 (
-	MaTaiXe VARCHAR(10) PRIMARY KEY,
+	MaTaiXe int PRIMARY KEY identity,
 	HoTen NVARCHAR(50),
 	CMND VARCHAR(50) UNIQUE,
 	DienThoai VARCHAR(50),
@@ -78,22 +80,22 @@ CREATE TABLE TaiXe
 
 CREATE TABLE ChiNhanh
 (
-	MaChiNhanh VARCHAR(10) PRIMARY KEY,
-	MaSoThue VARCHAR(10) NOT NULL,
+	MaChiNhanh int PRIMARY KEY identity,
+	MaSoThue int NOT NULL,
 	TenChiNhanh NVARCHAR(50),
 	DiaChi NVARCHAR(50)
 )
 
 CREATE TABLE ThongBao
 (
-	MaThongBao VARCHAR(10) PRIMARY KEY,
+	MaThongBao int PRIMARY KEY identity,
 	NoiDung NVARCHAR(50),
-	MaSoThue VARCHAR(10) NOT NULL
+	MaSoThue int NOT NULL
 )
 
 CREATE TABLE NhanVien
 (
-	MaNhanVien VARCHAR(10) PRIMARY KEY,
+	MaNhanVien int PRIMARY KEY identity,
 	HoTen NVARCHAR(50),
 	SDT VARCHAR(10),
 	DiaChi NVARCHAR(50),
@@ -102,7 +104,7 @@ CREATE TABLE NhanVien
 
 CREATE TABLE Admins
 (
-	MaAdmin VARCHAR(10) PRIMARY KEY,
+	MaAdmin  int PRIMARY KEY identity,
 	HoTen NVARCHAR(50),
 	SDT VARCHAR(10),
 	DiaChi NVARCHAR(50),
@@ -112,8 +114,8 @@ CREATE TABLE Admins
 
 CREATE TABLE SanPham
 (
-	MaSP VARCHAR(10) PRIMARY KEY,
-	MaChiNhanh VARCHAR(10) NOT NULL,
+	MaSP  int PRIMARY KEY identity,
+	MaChiNhanh int  NOT NULL,
 	SoLuongTon INT,
 	GiaCa INT,
 	TenSP VARCHAR(50)
@@ -121,19 +123,21 @@ CREATE TABLE SanPham
 
 CREATE TABLE DHSP
 (
-	MaSP VARCHAR(10) PRIMARY KEY,
-	MaDonHang VARCHAR(10) NOT NULL,
+	MaSP  int ,
+	MaDonHang int,
 	SoLuong INT,
 	Gia INT,
+	PRIMARY KEY(MaSP,MaDonHang)
 )
 
 CREATE TABLE TaiKhoan
 (
-	MaNguoidung VARCHAR(10) PRIMARY KEY,
+	MaNguoidung int PRIMARY KEY identity,
 	TenDangNhap VARCHAR(50) UNIQUE,
 	MatKhau VARCHAR(50),
 	LoaiNguoiDung int,
 	TinhTrang NVARCHAR(50),
+	MaNguoiDung int,
 	CHECK (TinhTrang IN(N'Khoá', N'Mở')),
 	CHECK (LoaiNguoiDung IN(1,2,3,4,5))
 )
@@ -209,22 +213,48 @@ BEGIN
 END
 
 -- Mỗi sản phẩm có 1 số lượng nhất định, nếu thêm sửa số lượng mà vượt quá số hiện tại thì huỷ
+-- giá = giá sản phẩm * số lượng
+-- phí sản phẩm từ bảng đơn hàng = sum(đơn giá)
 GO 
+create function fn_dongia (@madh int, @masp int)
+returns int
+begin
+	return (select sanpham.giaca*soluong
+	from sanpham, DHSP 
+	where sanpham.masp = DHSP.masp and DHSP.masp = @masp and DHSP.madonhang = @madh) 
+END
+go
+create function fn_phisanpham (@madh int)
+returns int
+begin
+	return (select SUM(gia)
+	from DHSP 
+	where DHSP.madonhang = @madh) 
+END
+
+go
 CREATE TRIGGER tg_LuongDatHang
 ON dbo.DHSP FOR INSERT,UPDATE
 as
 BEGIN
     DECLARE @sosanpham INT
+	SELECT @sosanpham = DHSP.SoLuong FROM dbo.DHSP, Inserted WHERE Inserted.MaSP = DHSP.MaSP and inserted.madonhang = DHSP.madonhang
 
-	SELECT @sosanpham = SUM(DHSP.SoLuong) FROM dbo.DHSP, Inserted WHERE Inserted.MaSP = DHSP.MaSP
+	DECLARE @SoLuongTon INT
+	SELECT @SoLuongTon = SoLuongTon FROM dbo.SanPham,Inserted,DHSP WHERE dbo.SanPham.masp = Inserted.masp and inserted.masp = DHSP.masp and inserted.madonhang = DHSP.madonhang
 
-	IF @sosanpham>(SELECT SoLuongTon FROM dbo.SanPham,Inserted WHERE dbo.SanPham.masp = Inserted.masp)
+	IF (@sosanpham> @SoLuongTon)
 	BEGIN
 	    PRINT N'Không thể đặt thêm'
 		ROLLBACK TRAN
 		return
 	END
+	begin tran
+	update DHSP set gia = dbo.fn_dongia (DHSP.madonhang, DHSP.masp) from DHSP,inserted where inserted.masp = DHSP.masp and inserted.madonhang = DHSP.madonhang
+	update donhang set phisanpham = dbo.fn_phisanpham(inserted.madonhang) from donhang,inserted where inserted.madonhang = donhang.madonhang
+	commit tran
 END
+
 
 -- Mỗi đối tác có số lượng đơn giao nhất định cho mỗi ngày nếu đã đủ thì không giao thêm đơn nào nữa
 GO 
@@ -235,9 +265,15 @@ BEGIN
     DECLARE @soDH INT
 
 	SELECT @soDH = COUNT(dbo.DonHang.MaDonHang) FROM dbo.DonHang,Inserted 
-	WHERE Inserted.MaSoThue = dbo.DonHang.MaSoThue AND dbo.DonHang.ngaydat = GETDATE()
+	WHERE Inserted.MaSoThue = dbo.DonHang.MaSoThue 
+	AND DAY(dbo.DonHang.ngaydat) =  DAY(GETDATE())
+	AND MONTH(dbo.DonHang.ngaydat) =  MONTH(GETDATE())
+	AND YEAR(dbo.DonHang.ngaydat) =  YEAR(GETDATE())
 
-	IF @soDH > (SELECT SoLuongDonHangMoiNgay FROM dbo.DoiTac, Inserted WHERE Inserted.MaSoThue = dbo.DoiTac.MaSoThue)
+	declare @dhhn INT
+	SELECT @dhhn = SoLuongDonHangMoiNgay FROM dbo.DoiTac, Inserted WHERE Inserted.MaSoThue = dbo.DoiTac.MaSoThue
+
+	IF (@soDH > @dhhn)
 	BEGIN
 	    PRINT N'Không thể đặt thêm đơn hàng vì đã vượt quá số lượng đơn của đối tác'
 		ROLLBACK TRAN
@@ -261,3 +297,6 @@ BEGIN TRAN
     UPDATE dbo.HopDong SET @phantramhoahong = @phantramhoahong WHERE MaHopDong = @mahopdong
 COMMIT TRAN
 
+select * from donhang
+select * from DHSP where madonhang = 1
+go

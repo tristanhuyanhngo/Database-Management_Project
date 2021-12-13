@@ -23,7 +23,7 @@ COMMIT TRAN
 go
 
 CREATE PROC SP_GiaHanHopDong
-	@MaHopDong varchar(10), @new date
+	@MaHopDong int,  @new date
 AS
 SET TRAN ISOLATION LEVEL Read committed
 BEGIN TRAN
