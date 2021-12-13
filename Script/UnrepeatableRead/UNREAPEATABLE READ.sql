@@ -1,7 +1,7 @@
 ﻿
 CREATE PROC SP_HopDongHetHang
 AS
-SET TRAN ISOLATION LEVEL Read uncommitted
+SET TRAN ISOLATION LEVEL Read committed
 BEGIN TRAN
 	BEGIN TRY
 	    SELECT * FROM HopDong 
@@ -25,7 +25,7 @@ go
 CREATE PROC SP_GiaHanHopDong
 	@MaHopDong varchar(10), @new date
 AS
-SET TRAN ISOLATION LEVEL Read uncommitted
+SET TRAN ISOLATION LEVEL Read committed
 BEGIN TRAN
 	BEGIN TRY
 		IF NOT EXISTS(select * from HopDong where MaHopDong = @MaHopDong)
