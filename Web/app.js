@@ -19,6 +19,7 @@ app.use(express.urlencoded({
 app.engine('hbs', engine({
   defaultLayout: 'layout.hbs'
 }));
+
 app.set('view engine', 'hbs');
 app.set('views', './views');
 
@@ -28,6 +29,11 @@ app.get('/', function (req, res) {
 });
 
 app.use('/admin/categories', categoryRoute);
+
+//PA test
+app.get('/add',function (req,res){
+  res.render('add_account');
+})
 
 const port = 3000;
 app.listen(port, function () {
