@@ -19,7 +19,7 @@ Version:4.4.0.2241-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>5</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -223,7 +223,7 @@ Version:4.4.0.2241-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>10000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -252,7 +252,7 @@ Version:4.4.0.2241-->
           <Name>MaSoThue</Name>
           <FieldType>Generated</FieldType>
           <PrimaryKey>False</PrimaryKey>
-          <ForeignKey>False</ForeignKey>
+          <ForeignKey>True</ForeignKey>
           <Unique>False</Unique>
           <AllowsNulls>False</AllowsNulls>
           <SqlType>Integer32</SqlType>
@@ -260,46 +260,14 @@ Version:4.4.0.2241-->
           <Scale>0</Scale>
           <DefinedSize>4</DefinedSize>
           <Generator version="1" type="GeneratorDetails">
-            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
-            <DisplayName>int</DisplayName>
-            <Description>Generates int (32-bit) values</Description>
+            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Others.FKInternalGenerator</GeneratorTypeName>
+            <DisplayName>Foreign Key (automatic)</DisplayName>
+            <Description>Reference Foreign Key $FK for column $FKField</Description>
             <CategoryName>SQL Type</CategoryName>
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
-                <key type="string">Increment</key>
-                <value type="string">1</value>
-              </element>
-              <element>
-                <key type="string">UseSequence</key>
-                <value type="string">False</value>
-              </element>
-              <element>
                 <key type="string">Unique</key>
                 <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">MinValue</key>
-                <value type="string">-2147483648</value>
-              </element>
-              <element>
-                <key type="string">MaxValue</key>
-                <value type="string">2147483647</value>
-              </element>
-              <element>
-                <key type="string">UseColumnOffset</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullsAllowed</key>
-                <value type="string">False</value>
-              </element>
-              <element>
-                <key type="string">NullProportion</key>
-                <value type="string">0.01</value>
-              </element>
-              <element>
-                <key type="string">Seed</key>
-                <value type="string">1029</value>
               </element>
             </GeneratorProperties>
           </Generator>
@@ -389,13 +357,26 @@ Version:4.4.0.2241-->
           </Generator>
         </value>
       </Fields>
-      <ForeignKeyProperties type="List&lt;ForeignKeyProperty&gt;" version="1" />
+      <ForeignKeyProperties type="List&lt;ForeignKeyProperty&gt;" version="1">
+        <value version="2" type="ForeignKeyProperty">
+          <Fields type="List&lt;string&gt;" version="1">
+            <value type="string">MaSoThue</value>
+          </Fields>
+          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <MaxBuckets>1000</MaxBuckets>
+          <Seed>0</Seed>
+          <MinRepeats>1</MinRepeats>
+          <MaxRepeats>10</MaxRepeats>
+          <NullsAllowed>False</NullsAllowed>
+          <NullProportion>0.01</NullProportion>
+        </value>
+      </ForeignKeyProperties>
     </value>
     <value version="3" type="SDGTable">
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>6000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -488,12 +469,12 @@ Version:4.4.0.2241-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>10001</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
       </PopulationDetails>
-      <InvalidRowBehaviour>SkipRow</InvalidRowBehaviour>
+      <InvalidRowBehaviour>Truncate</InvalidRowBehaviour>
       <Included>True</Included>
       <Append>False</Append>
       <Name>DHSP</Name>
@@ -502,7 +483,7 @@ Version:4.4.0.2241-->
       <IdentityInsert>True</IdentityInsert>
       <Fields type="List&lt;SDGField&gt;" version="1">
         <value version="1" type="SDGField">
-          <Name>MaSP</Name>
+          <Name>MaDonHang</Name>
           <FieldType>Generated</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>True</ForeignKey>
@@ -526,7 +507,7 @@ Version:4.4.0.2241-->
           </Generator>
         </value>
         <value version="1" type="SDGField">
-          <Name>MaDonHang</Name>
+          <Name>MaSP</Name>
           <FieldType>Generated</FieldType>
           <PrimaryKey>True</PrimaryKey>
           <ForeignKey>True</ForeignKey>
@@ -667,7 +648,7 @@ Version:4.4.0.2241-->
           <Fields type="List&lt;string&gt;" version="1">
             <value type="string">MaDonHang</value>
           </Fields>
-          <ForeignKeyFillMethod>RepeatForever</ForeignKeyFillMethod>
+          <ForeignKeyFillMethod>Unique</ForeignKeyFillMethod>
           <MaxBuckets>1000</MaxBuckets>
           <Seed>0</Seed>
           <MinRepeats>1</MinRepeats>
@@ -1348,7 +1329,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">C:\Users\anhkh\OneDrive\Máy tính\Tinh trang don hang.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tinh trang don hang.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -1540,7 +1521,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">C:\Users\anhkh\OneDrive\Máy tính\HTTT.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\HTTT.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -1992,7 +1973,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">C:\Users\anhkh\OneDrive\Máy tính\Tình trang.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tình trang.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -2033,7 +2014,7 @@ Version:4.4.0.2241-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>1000</RowCount>
+        <RowCount>2000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -2842,7 +2823,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">C:\Users\anhkh\OneDrive\Máy tính\Tinh trang KH.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tinh trang KH.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -2859,6 +2840,62 @@ Version:4.4.0.2241-->
               <element>
                 <key type="string">Seed</key>
                 <value type="string">10244</value>
+              </element>
+            </GeneratorProperties>
+          </Generator>
+        </value>
+        <value version="1" type="SDGField">
+          <Name>nguoidung</Name>
+          <FieldType>Generated</FieldType>
+          <PrimaryKey>False</PrimaryKey>
+          <ForeignKey>False</ForeignKey>
+          <Unique>False</Unique>
+          <AllowsNulls>True</AllowsNulls>
+          <SqlType>Integer32</SqlType>
+          <Precision>10</Precision>
+          <Scale>0</Scale>
+          <DefinedSize>4</DefinedSize>
+          <Generator version="1" type="GeneratorDetails">
+            <GeneratorTypeName>RedGate.SQLDataGenerator.Generators.Number.Int32Generator</GeneratorTypeName>
+            <DisplayName>IDs</DisplayName>
+            <Description>1,2,3,4,5,6....</Description>
+            <CategoryName>Business</CategoryName>
+            <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
+              <element>
+                <key type="string">Increment</key>
+                <value type="string">1</value>
+              </element>
+              <element>
+                <key type="string">UseSequence</key>
+                <value type="string">True</value>
+              </element>
+              <element>
+                <key type="string">Unique</key>
+                <value type="string">True</value>
+              </element>
+              <element>
+                <key type="string">MinValue</key>
+                <value type="string">1</value>
+              </element>
+              <element>
+                <key type="string">MaxValue</key>
+                <value type="string">2147483647</value>
+              </element>
+              <element>
+                <key type="string">UseColumnOffset</key>
+                <value type="string">False</value>
+              </element>
+              <element>
+                <key type="string">NullsAllowed</key>
+                <value type="string">True</value>
+              </element>
+              <element>
+                <key type="string">NullProportion</key>
+                <value type="string">0.01</value>
+              </element>
+              <element>
+                <key type="string">Seed</key>
+                <value type="string">10245</value>
               </element>
             </GeneratorProperties>
           </Generator>

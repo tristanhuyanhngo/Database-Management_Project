@@ -123,8 +123,8 @@ CREATE TABLE SanPham
 
 CREATE TABLE DHSP
 (
-	MaDonHang int not null,
-	MaSP int not null,
+	MaDonHang int,
+	MaSP int ,
 	SoLuong INT,
 	Gia INT,
 	PRIMARY KEY(MaSP,MaDonHang)
@@ -193,26 +193,19 @@ ALTER TABLE dbo.ChiTietHopDong
 ADD CONSTRAINT FK_CTHD_CN
 FOREIGN KEY (MaChiNhanh)
 REFERENCES dbo.ChiNhanh(MaChiNhanh)
-
-ALTER TABLE dbo.chinhanh
-ADD CONSTRAINT FK_CN_DT
-FOREIGN KEY (MaSoThue)
-REFERENCES dbo.DoiTac(MaSoThue)
 ----------------------------------------Trigger-------------------------------------------
+-- Thêm, chỉnh chi nhánh. mỗi đối tác có ghi số lượng chi nhánh khi đăng ký
 GO 
-create function fn_sochinhanh (@masothue int)
-returns int
-begin
-	return (select COUNT(dbo.ChiNhanh.MaChiNhanh) FROM dbo.ChiNhanh WHERE dbo.ChiNhanh.masothue =  @masothue)
-END
-go
 CREATE TRIGGER tg_ChiNhanhTong
 ON dbo.ChiNhanh FOR INSERT,UPDATE
 as
 BEGIN
-	IF (not exists(SELECT * FROM dbo.DoiTac,Inserted 
-					WHERE Inserted.MaSoThue = dbo.DoiTac.MaSoThue 
-					and dbo.fn_sochinhanh(inserted.masothue) > SoChiNhanh))
+    DECLARE @sochinhanh INT
+
+	SELECT @sochinhanh = COUNT(dbo.ChiNhanh.MaChiNhanh) FROM dbo.ChiNhanh,Inserted 
+	WHERE Inserted.MaSoThue = dbo.ChiNhanh.MaSoThue GROUP BY dbo.ChiNhanh.MaSoThue
+
+	IF @sochinhanh > (SELECT SoChiNhanh FROM dbo.DoiTac,Inserted WHERE Inserted.MaSoThue = dbo.DoiTac.MaSoThue)
 	BEGIN
 		PRINT N'Đã đủ số chi nhánh, không thể thêm'
 		ROLLBACK TRAN
@@ -287,23 +280,6 @@ BEGIN
 		ROLLBACK TRAN
 		return
 	END
-END
-
-GO
-
--- Chi nhánh đăng ký phải là của đối tác
-
-CREATE TRIGGER tg_ChiNhanhDangKy
-ON dbo.ChiTietHopDong FOR INSERT, update
-as
-BEGIN
-    if(not exists(select * from ChiNhanh, HopDong, inserted, ChiTietHopDong
-				where inserted.MaChiNhanh = ChiNhanh.MaChiNhanh
-				and inserted.mahopdong = HopDong.mahopdong
-				and ChiNhanh.masothue = hopdong.masothue))
-		BEGIN
-		delete ChiTietHopDong from inserted where inserted.MaChiNhanh = ChiTietHopDong.MaChiNhanh and inserted.mahopdong = ChiTietHopDong.mahopdong
-		END
 END
 
 --------------------------------------Transaction----------------------------------------

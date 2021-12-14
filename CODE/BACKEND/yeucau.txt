@@ -1,0 +1,7 @@
+kiểm tra hợp dồng của Nhân viên
+Thông báo của nhân viên
+Lập hợp đồng của đối tác
+xem danh sách sản phẩm của đối tác
+xem danh sách đơn hàng của tài xế
+Đặt hàng của khách hàng
+cần đăng ký đăng nhập cho 4 tk đó
