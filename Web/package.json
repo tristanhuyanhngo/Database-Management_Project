@@ -11,15 +11,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.1",
     "debug": "^4.3.3",
     "express": "^4.17.1",
     "express-handlebars": "^6.0.1",
     "knex": "^0.95.14",
     "morgan": "^1.10.0",
+    "msnodesqlv8": "^2.4.3",
+    "mssql": "^7.3.0",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
   },
   "description": ""
 }

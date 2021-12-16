@@ -1,16 +1,14 @@
 import express from 'express';
 import morgan from 'morgan';
 import { engine } from 'express-handlebars';
-
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-
 import categoryRoute from './routes/category.route.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
-
+import KHRouter from '../'
 app.use(morgan('dev'));
 app.use(express.urlencoded({
   extended: true
