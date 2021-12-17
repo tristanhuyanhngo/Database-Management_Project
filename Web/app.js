@@ -20,6 +20,7 @@ app.use(express.urlencoded({
 }));
 
 import catagoryRouter from './routes/category.route.js' 
+import loginRouter from './routes/login.route.js'
 
 app.use('/', catagoryRouter);
 
@@ -30,9 +31,7 @@ app.get('/add',function (req,res){
   res.render('add_account');
 })
 
-app.get('/login',function (req,res){
-  res.render('login');
-})
+app.use('/login',loginRouter)
 
 app.get('/register/customer',function (req,res){
   res.render('customer_register');

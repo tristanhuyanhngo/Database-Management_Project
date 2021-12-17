@@ -210,13 +210,12 @@ CREATE TRIGGER tg_ChiNhanhTong
 ON dbo.ChiNhanh FOR INSERT,UPDATE
 as
 BEGIN
-	IF (not exists(SELECT * FROM dbo.DoiTac,Inserted 
+	IF (exists(SELECT * FROM dbo.DoiTac,Inserted 
 					WHERE Inserted.MaSoThue = dbo.DoiTac.MaSoThue 
 					and dbo.fn_sochinhanh(inserted.masothue) > SoChiNhanh))
 	BEGIN
 		PRINT N'Đã đủ số chi nhánh, không thể thêm'
-		ROLLBACK TRAN
-		return
+		delete ChiNhanh from inserted where Inserted.machinhanh = dbo.ChiNhanh.machinhanh
 	END
 END
 

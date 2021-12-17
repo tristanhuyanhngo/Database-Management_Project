@@ -151,7 +151,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -335,7 +335,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -376,7 +376,7 @@ Version:4.4.0.2241-->
       <TableType>Generated</TableType>
       <PopulationDetails version="2" type="PopulationDetails">
         <PopulationType>RowCount</PopulationType>
-        <RowCount>6000</RowCount>
+        <RowCount>3000</RowCount>
         <ProportionTableExists>False</ProportionTableExists>
         <Proportion>0</Proportion>
         <TimeToPopulate>0</TimeToPopulate>
@@ -806,7 +806,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tinh_ThanhPho.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tinh_ThanhPho.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -846,7 +846,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Quan_Huyen.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Quan_Huyen.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -898,11 +898,11 @@ Version:4.4.0.2241-->
               </element>
               <element>
                 <key type="string">MinValue</key>
-                <value type="string">1</value>
+                <value type="string">10</value>
               </element>
               <element>
                 <key type="string">MaxValue</key>
-                <value type="string">5</value>
+                <value type="string">100</value>
               </element>
               <element>
                 <key type="string">UseColumnOffset</key>
@@ -1042,7 +1042,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -1369,7 +1369,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tinh_ThanhPho.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tinh_ThanhPho.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -1561,7 +1561,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -2146,7 +2146,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -2350,7 +2350,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -3127,7 +3127,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tên đường.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tên đường.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
@@ -3167,7 +3167,7 @@ Version:4.4.0.2241-->
             <GeneratorProperties type="Dictionary&lt;string, object&gt;" version="1">
               <element>
                 <key type="string">FileName</key>
-                <value type="string">D:\Advanced-Database_Analyze-Design-Ecommerce-Web\dữ liệu\Tinh_ThanhPho.txt</value>
+                <value type="string">D:\Database-Management_Project\Data\Tinh_ThanhPho.txt</value>
               </element>
               <element>
                 <key type="string">Unique</key>
