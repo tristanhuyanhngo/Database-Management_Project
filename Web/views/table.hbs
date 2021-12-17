@@ -1,0 +1,97 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+          <h1 class="font-italic">
+          <p class="text-center">Pick a new order to deliver!</p>
+          </h1>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title danger text-center">Your working area: var_name</h4>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Ordered date</th>
+                    <th>State</th>
+                    <th>Address</th>
+                    <th> </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each products}}
+                  <tr>
+                    <td>Sample ID</td>
+                    <td>Sample date</td>
+                    <td>Sample State</td>
+                    <td>Sample fee</td>
+                    <td class="project-actions text-md-center">
+                      <form method="POST" action="/one?_method=GET">
+                        <a class="btn btn-info btn-sm" href="/one">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Take the order
+                        </a>
+                      </form>
+                    </td>
+                  </tr>
+                  {{/each}}
+                  <tr>
+                    <td>Sample ID</td>
+                    <td>Sample date</td>
+                    <td>Sample State</td>
+                    <td>Sample address</td>
+                    <td class="project-actions text-md-center">
+                      <form method="POST" action="/one?_method=GET">
+                        <a class="btn btn-info btn-sm" href="/one">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Take the order
+                        </a>
+                      </form>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Sample ID</td>
+                    <td>Sample date</td>
+                    <td>Sample State</td>
+                    <td>Sample address</td>
+                    <td class="project-actions text-md-center">
+                      <form method="POST" action="/one?_method=GET">
+                        <a class="btn btn-info btn-sm" href="/one">
+                          <i class="fas fa-pencil-alt">
+                          </i>
+                          Take the order
+                        </a>
+                      </form>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

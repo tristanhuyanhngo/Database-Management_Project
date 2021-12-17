@@ -48,6 +48,14 @@ app.get('/register/driver',function (req,res){
   res.render('driver_register');
 })
 
+//PA TEST
+app.get('/table',function (req,res) {
+  res.render('table');
+})
+app.get('/one',function (req,res){
+  res.render('one');
+})
+
 const port = 3000;
 app.listen(port, function () {
   console.log(`Example app listening at http://localhost:${port}`);
