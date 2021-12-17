@@ -2,38 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
 {{/section}}
 
-{{#section 'js'}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-    <script>
-        $('#frmRegister').on('submit', function (e) {
-            e.preventDefault();
-
-            const username = $('#txtUsername').val();
-            if (username.length === 0) {
-                alert('Invalid data!');
-                return;
-            }
-
-            $.getJSON(`/account/is-available?user=${username}`, function (data) {
-                if (data === false) {
-                    alert('Not available!');
-                } else {
-                    $('#frmRegister').off('submit').submit();
-                }
-            });
-        });
-
-        $('#txtDOB').datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
-            mask: true
-        });
-
-        $('#txtUsername').select();
-    </script>
-{{/section}}
-
-<form id="frmRegister" method="post">
+<form id="frmRegister" method="P" action="/login/log">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
@@ -43,7 +12,7 @@
             <div class="card-body">
                 <p class="login-box-msg text-center"><b>Sign in to start your session</b></p>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input name="username" type="text" class="form-control" placeholder="Username">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -52,7 +21,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input name="pass" type="password" class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>

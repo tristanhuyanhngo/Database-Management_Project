@@ -4,3 +4,9 @@ Lập hợp đồng của đối tác
 xem danh sách sản phẩm của đối tác
 xem danh sách đơn hàng của tài xế
 Đặt hàng của khách hàng
+
+
+
+dang ky
+insert into khachhang(HoTen,SDT,DiaChi,Email) values (N'Phùng Anh Khoa', '08919571589',N'Nguyễn Đình Chiểu', 'anhkhoa24@gmail.com')
+insert into taikhoan(TenDangNhap,MatKhau,LoaiNguoiDung,TinhTrang,nguoidung) values('wander','hehe',1,N'Mở',2001)

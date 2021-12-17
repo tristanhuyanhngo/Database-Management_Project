@@ -23,6 +23,7 @@ import catagoryRouter from './routes/category.route.js'
 import loginRouter from './routes/login.route.js'
 
 app.use('/', catagoryRouter);
+app.use('/login',loginRouter)
 
 app.use('/public', express.static('public'));
 
@@ -30,8 +31,6 @@ app.use('/public', express.static('public'));
 app.get('/add',function (req,res){
   res.render('add_account');
 })
-
-app.use('/login',loginRouter)
 
 app.get('/register/customer',function (req,res){
   res.render('customer_register');
