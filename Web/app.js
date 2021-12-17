@@ -19,10 +19,9 @@ app.use(express.urlencoded({
   extended: true
 }));
 
+import catagoryRouter from './routes/category.route.js' 
 
-app.get('/', function (req, res) {
-  res.render('home');
-});
+app.use('/', catagoryRouter);
 
 app.use('/public', express.static('public'));
 
