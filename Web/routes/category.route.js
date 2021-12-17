@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', async function (req, res) {
   const list = await categoryModel.findAll();
-  res.render('vwCategory/index', {
+  res.render('home', {
     categories: list
   });
 });
