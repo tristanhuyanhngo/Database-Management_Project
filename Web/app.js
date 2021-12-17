@@ -21,7 +21,6 @@ app.use(express.urlencoded({
 
 
 app.get('/', function (req, res) {
-  // res.send('Hello World!');
   res.render('home');
 });
 

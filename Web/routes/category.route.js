@@ -12,13 +12,6 @@ router.get('/', async function (req, res) {
 
 router.get('/add', function (req, res) {
   res.render('vwCategory/add');
-});
-
-router.post('/add', async function (req, res) {
-  //console.log(req.body);
-  const ret = await categoryModel.add(req.body);
-  // console.log(ret);
-  res.render('vwCategory/add');
-});
+}); 
 
 export default router;

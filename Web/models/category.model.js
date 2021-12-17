@@ -10,11 +10,18 @@
 import db from '../utils/db.js';
 
 export default {
-  findAll() {
-    return db('categories');
+  async findAll() {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+        "select * from khachhang";
+      await pool.request()
+        .query(sqlstring, (e, data2) => {
+          if (data2.recordset.length > 0) return data2.recordset
+          else return null
+        });
+    } catch {
+      return null
+    }
   },
-
-  add(entity) {
-    return db('categories').insert(entity);
-  }
 }
