@@ -10,7 +10,8 @@ export default {
       .input("varDN",db.sql.VarChar, log.username)
       .input("varMK",db.sql.VarChar, log.pass)
       .query(sqlstring, (e, data2) => {
-        if (!e) result(null, data2.recordset[0]);
+        console.log(data2.recordset)
+        if (data2.recordset.length>0) result(null, data2.recordset[0]);
         else result(true, null);
       });
     } catch {

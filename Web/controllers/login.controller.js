@@ -5,7 +5,8 @@ export function paging(req, res) {
 }
 
 export function login(req, res) {
-    loginModel.checkLogin(req.query,(e,data)=>{
+    loginModel.checkLogin(req.body,(e,data)=>{
+        if(!e)  
         res.render("home",{id:data.id})
     })
 }
