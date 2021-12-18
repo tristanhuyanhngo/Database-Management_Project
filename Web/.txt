@@ -5,6 +5,7 @@ xem danh sách sản phẩm của đối tác
 xem danh sách đơn hàng của tài xế
 Đặt hàng của khách hàng
 
+--->   xong đăng ký cho tài xế, đăng nhập cho khách hàng, hiển thị đơn hàng cho tài xế
 
 
 dang ky
