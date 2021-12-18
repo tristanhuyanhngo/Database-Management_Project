@@ -6,7 +6,7 @@ export function driver(req, res) {
 
 export function driverRegiste(req, res) {
     registerModel.driverRegister(req.body,(e,data)=>{
-        console.log(data)
+        res.render("driver_register")
     })
 }
 
