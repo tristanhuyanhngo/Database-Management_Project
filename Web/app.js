@@ -2,7 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-const __dirname = dirname(fileURLToPath(import.meta.url));
+export const __dirname = dirname(fileURLToPath(import.meta.url));
+
 import activate_view_middleware from './middlewares/view.mdw.js';
 import bodyParser from 'body-parser';
 //import activate_route_middleware from './middlewares/routes.mdw.js';

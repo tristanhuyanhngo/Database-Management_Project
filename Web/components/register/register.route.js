@@ -1,10 +1,10 @@
 import express from 'express';
 import { driver,customer,partner,
-        driverRegiste } from './register.controller.js';
+        driverRegister } from './register.controller.js';
 const router = express.Router();
 
 router.get('/driver', driver);
-router.post('/driver', driverRegiste)
+router.post('/driver', driverRegister)
 
 router.get('/customer', customer);
 

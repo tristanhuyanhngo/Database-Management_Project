@@ -1,20 +1,20 @@
 import registerModel from "./register.model.js";
 
 export function driver(req, res) {
-    res.render("driver_register")
+    res.render("register/views/driver_register")
 }
 
-export function driverRegiste(req, res) {
+export function driverRegister(req, res) {
     registerModel.driverRegister(req.body,(e,data)=>{
-        res.render("driver_register")
+        res.render("register/views/driver_register")
     })
 }
 
 export function customer(req, res) {
-    res.render("customer_register")
+    res.render("register/views/customer_register")
 }
 
 export function partner(req, res) {
-    res.render("partner_register")
+    res.render("register/views/partner_register")
 }
 
