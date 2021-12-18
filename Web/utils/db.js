@@ -13,10 +13,16 @@
 // });
 
 // export default knex;
-
+/**
+ * server: "DESKTOP-I5NJLCP\\WANDER",
+ user:"sa",
+ password: "1",
+ database:"HTDCHO",
+ driver:"msnodesqlv8",
+ */
 import sql from "mssql/msnodesqlv8.js"
 const config = {
-    server: "DESKTOP-I5NJLCP\\WANDER",
+    server: "MSI\\SQLEXPRESS",
     user:"sa",
     password: "1",
     database:"HTDCHO",

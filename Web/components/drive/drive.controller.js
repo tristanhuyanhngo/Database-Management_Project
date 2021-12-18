@@ -5,9 +5,10 @@ export function paging(req, res) {
 }
 
 export function table(req, res) {
+  const area_id = "123";
   driveModel.getOrder("Gia Lai",(e, data) => {
       console.log(data)
-    res.render("table",{orders:data});
+    res.render("table",{orders:data, area_id});
   });
 }
 
