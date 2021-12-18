@@ -6,13 +6,11 @@ export function paging(req, res) {
 
 export function login(req, res) {
   loginModel.checkLogin(req.body, (e, data) => {
-    if (data!=undefined && data!=null) {
+    if (data != undefined && data != null) {
       res.locals.id = data.id;
       res.redirect("/");
-    }
-    else
-    {
-        res.status(404).json({ errors:"error" });
+    } else {
+      res.status(404).json({ errors: "error" });
     }
   });
 }
