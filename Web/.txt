@@ -10,3 +10,9 @@ xem danh sách đơn hàng của tài xế
 dang ky
 insert into khachhang(HoTen,SDT,DiaChi,Email) values (N'Phùng Anh Khoa', '08919571589',N'Nguyễn Đình Chiểu', 'anhkhoa24@gmail.com')
 insert into taikhoan(TenDangNhap,MatKhau,LoaiNguoiDung,TinhTrang,nguoidung) values('wander','hehe',1,N'Mở',2001)
+
+insert into taixe(HoTen,CMND,DienThoai,BienSoXe,DiaChi,KhuVucHoatDong,Email,STK,NganHang)
+values('Phung Anh Khoa', '231300790','0845500024','AKHD-824782','22/1 Nguyen Dinh Chieu','Gia Lai','anhkhoa24082001@gmail.com','9418938913891839', 'Agribank')
+select max(mataixe) as id from taixe
+insert into taikhoan(TenDangNhap,MatKhau,LoaiNguoiDung,TinhTrang,nguoidung)
+values('wander2','hehe',2,N'Mở',1001)

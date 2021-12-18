@@ -9,10 +9,10 @@ import bodyParser from 'body-parser';
 
 const app = express();
 
-import loginRouter from './routes/login.route.js'
-import registerRouter from './routes/register.route.js'
-import homeRouter from './routes/home.route.js'
-import driveRouter from './routes/drive.route.js'
+import loginRouter from './components/login/login.route.js'
+import registerRouter from './components/register/register.route.js'
+import homeRouter from './components/home/home.route.js'
+import driveRouter from './components/drive/drive.route.js'
 
 activate_view_middleware(app);
 app.use(bodyParser.json())

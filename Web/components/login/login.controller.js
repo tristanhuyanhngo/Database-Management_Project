@@ -1,4 +1,4 @@
-import loginModel from "../models/login.model.js";
+import loginModel from "./login.model.js";
 
 export function paging(req, res) {
   res.render("login");

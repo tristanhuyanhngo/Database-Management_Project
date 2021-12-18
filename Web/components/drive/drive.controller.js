@@ -1,4 +1,4 @@
-import driveModel from "../models/drive.model.js";
+import driveModel from "./drive.model.js";
 
 export function paging(req, res) {
     res.render("home")

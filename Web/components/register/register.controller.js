@@ -1,4 +1,4 @@
-import registerModel from "../models/register.model.js";
+import registerModel from "./register.model.js";
 
 export function driver(req, res) {
     res.render("driver_register")
@@ -6,7 +6,7 @@ export function driver(req, res) {
 
 export function driverRegiste(req, res) {
     registerModel.driverRegister(req.body,(e,data)=>{
-        res.render("driver_register")
+        console.log(data)
     })
 }
 
