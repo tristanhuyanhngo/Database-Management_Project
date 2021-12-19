@@ -1,8 +1,12 @@
 import { engine } from 'express-handlebars';
 import hbs_sections from 'express-handlebars-sections';
 import numeral from 'numeral';
-import { __dirname } from '../app.js'
+
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import path from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default function (app) {
     app.engine('hbs', engine({
