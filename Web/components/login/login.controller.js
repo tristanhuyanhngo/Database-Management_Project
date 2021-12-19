@@ -1,7 +1,7 @@
 import loginModel from "./login.model.js";
 
 export function paging(req, res) {
-  res.render("home/views/login");
+  res.render('login/views/login');
 }
 
 export function login(req, res) {

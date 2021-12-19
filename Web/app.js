@@ -4,11 +4,13 @@ import bodyParser from 'body-parser';
 // Middleware
 import activate_view_middleware from './middlewares/view.mdw.js';
 import activate_route_middleware from './middlewares/routes.mdw.js';
+import activate_session_middleware from './middlewares/session.mdw.js';
 
 const app = express();
 
 activate_view_middleware(app);
 activate_route_middleware(app);
+activate_session_middleware(app);
 
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended: true}));
