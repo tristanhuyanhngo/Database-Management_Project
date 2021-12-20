@@ -33,12 +33,23 @@
 
               <dt class="col-sm-3">Payment: </dt>
               <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+
+               <dt class="col-sm-3">State: </dt>
+               <dd class="col-sm-9">
+               <form>
+                <select class="custom-select rounded-0" id="state" name="state">
+                  <option>Đã giao</option>
+                  <option>Đang giao</option>
+                  <option>Chờ</option>
+                </select>
+               </form>
+               </dd>
             </dl>
 
             <div class="text-center">
                 <form method="POST" action="/one?_method=GET">
                    <a class="btn btn-info btn-lg btn-block" href="/drive/order_list">
-                    Take this order
+                    Save changes
                    </a>
                 </form>
              </div>

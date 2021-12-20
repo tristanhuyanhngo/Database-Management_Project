@@ -15,9 +15,12 @@ import sql from "mssql/msnodesqlv8.js";
  database:"HTDCHO",
  driver:"msnodesqlv8",
  */
-
+/**
+ * Server cua PA
+ *MSI\SQLEXPRESS
+ */
 const config = {
-    server: "DESKTOP-I5NJLCP\\WANDER",
+    server: "MSI\\SQLEXPRESS",
     user:"sa",
     password: "1",
     database:"HTDCHO",
