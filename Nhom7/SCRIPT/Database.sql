@@ -253,7 +253,7 @@ BEGIN
 	IF (@sosanpham> @SoLuongTon)
 	BEGIN
 	    PRINT N'Không thể đặt thêm'
-		ROLLBACK TRAN
+		ROLLBACK
 		return
 	END
 	begin tran
@@ -283,44 +283,37 @@ BEGIN
 	IF (@soDH > @dhhn)
 	BEGIN
 	    PRINT N'Không thể đặt thêm đơn hàng vì đã vượt quá số lượng đơn của đối tác'
-		ROLLBACK TRAN
+		ROLLBACK
 		return
 	END
 END
 
 GO
 
--- Chi nhánh đăng ký phải là của đối tác
+create function fn_sochinhanhdadangky (@mahd int)
+returns int
+begin
+	return (select count(*)
+	from ChiTietHopDong
+	where ChiTietHopDong.mahopdong = @mahd) 
+end
 
+go
+-- Chi nhánh đăng ký phải là của đối tác và số chi nhánh thêm vào không quá số chi nhánh đăng ký trong hợp đồng 
 CREATE TRIGGER tg_ChiNhanhDangKy
 ON dbo.ChiTietHopDong FOR INSERT, update
 as
 BEGIN
-    if(not exists(select * from ChiNhanh, HopDong, inserted, ChiTietHopDong
-				where inserted.MaChiNhanh = ChiNhanh.MaChiNhanh
-				and inserted.mahopdong = HopDong.mahopdong
-				and ChiNhanh.masothue = hopdong.masothue))
-		BEGIN
-		delete ChiTietHopDong from inserted where inserted.MaChiNhanh = ChiTietHopDong.MaChiNhanh and inserted.mahopdong = ChiTietHopDong.mahopdong
-		END
+    if(not exists(select *
+	from ChiNhanh, HopDong, inserted
+	where ChiNhanh.MaChiNhanh = inserted.MaChiNhanh
+	and HopDong.mahopdong = inserted.mahopdong
+	and hopdong.masothue = ChiNhanh.masothue))
+	BEGIN
+		rollback
+	END
 END
-
---------------------------------------Transaction----------------------------------------
-GO
-CREATE PROC TaiDangKyHoaDon
-@mahopdong VARCHAR(5), @thoigian DATE, @phantramhoahong FLOAT
-AS
-BEGIN TRAN
-    IF @mahopdong NOT IN (SELECT dbo.HopDong.MaHopDong FROM dbo.HopDong)
-    BEGIN
-        PRINT 'Hoa Don Nay Khong Ton Tai'
-        ROLLBACK TRAN
-        RETURN
-    END
-    UPDATE dbo.HopDong SET ThoiGianHieuLuc = @thoigian WHERE MaHopDong = @mahopdong
-    UPDATE dbo.HopDong SET @phantramhoahong = @phantramhoahong WHERE MaHopDong = @mahopdong
-COMMIT TRAN
-
-select * from donhang
-select * from DHSP where madonhang = 1
 go
+
+
+

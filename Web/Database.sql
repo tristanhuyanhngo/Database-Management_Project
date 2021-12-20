@@ -130,6 +130,11 @@ CREATE TABLE DHSP
 	PRIMARY KEY(MaSP,MaDonHang)
 )
 
+-- 1: quản trị
+-- 2: đối tác
+-- 3: khách hàng
+-- 4: tài xế
+-- 5: Nhân viên
 CREATE TABLE TaiKhoan
 (
 	MaNguoidung int PRIMARY KEY identity,
