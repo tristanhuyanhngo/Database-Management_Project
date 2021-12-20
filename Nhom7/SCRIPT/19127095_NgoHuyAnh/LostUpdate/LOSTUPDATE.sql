@@ -10,7 +10,8 @@ BEGIN TRAN
 				ROLLBACK TRAN
 				RETURN 1
 			END
-		IF NOT EXISTS(select * from DonHang,TaiXe where DonHang.KhuVuc = Taixe.KhuVucHoatDong and Taixe.MaTaiXe = @MaTaiXe and TinhTrang = N'Chờ' and MaDonHang = @MaDonHang)
+		IF NOT EXISTS(select * from DonHang,TaiXe where DonHang.KhuVuc = Taixe.KhuVucHoatDong and DonHang.MaTaiXe is null
+		and Taixe.MaTaiXe = @MaTaiXe and TinhTrang = N'Chờ' and MaDonHang = @MaDonHang)
 			BEGIN
 				PRINT N'Đặt hàng không khả thi'
 				ROLLBACK TRAN
