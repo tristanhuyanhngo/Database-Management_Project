@@ -1,11 +1,10 @@
 import sql from "mssql/msnodesqlv8.js";
 
 // Khoa: "DESKTOP-I5NJLCP\\WANDER",
-// HA: "DESKTOP-3218CJS\\",
+// HA: "DESKTOP-3218CJS\\", "DESKTOP-SFNTJJK\\SQLEXPRESS"
 // PA: "MSI\\SQLEXPRESS"
 
 const config = {
-    server: "DESKTOP-I5NJLCP\\WANDER",
     user:"sa",
     password: "1",
     database:"HTDCHO",
