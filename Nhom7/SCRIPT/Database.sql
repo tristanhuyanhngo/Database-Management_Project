@@ -299,19 +299,19 @@ begin
 end
 
 go
--- Chi nhánh đăng ký phải là của đối tác và số chi nhánh thêm vào không quá số chi nhánh đăng ký trong hợp đồng 
+-- Chi nhánh đăng ký phải là của đối tác 
 CREATE TRIGGER tg_ChiNhanhDangKy
-ON dbo.ChiTietHopDong FOR INSERT, update
+ON dbo.ChiTietHopDong 
+INSTEAD OF INSERT, update
 as
 BEGIN
-    if(not exists(select *
-	from ChiNhanh, HopDong, inserted
-	where ChiNhanh.MaChiNhanh = inserted.MaChiNhanh
-	and HopDong.mahopdong = inserted.mahopdong
-	and hopdong.masothue = ChiNhanh.masothue))
-	BEGIN
-		rollback
-	END
+    insert into ChiTietHopDong(mahopdong,machinhanh)
+	select
+	inserted.mahopdong,inserted.machinhanh
+	from inserted, hopdong,chinhanh
+	where inserted.mahopdong = hopdong.mahopdong
+	and inserted.machinhanh = chinhanh.machinhanh
+	and hopdong.masothue = chinhanh.masothue
 END
 go
 
