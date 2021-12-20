@@ -5,7 +5,7 @@ export default {
     try {
       const pool = await db.conn;
       const sqlstring =
-        "select * from donhang where KhuVuc = @varArea";
+        "select * from donhang where KhuVuc = @varArea and TinhTrang = N'Chờ'";
       return await pool
         .request()
         .input("varArea", db.sql.NVarChar, area)

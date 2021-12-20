@@ -3,7 +3,7 @@ import express from "express";
 import loginRouter from '../components/login/login.route.js'
 import registerRouter from '../components/register/register.route.js'
 import homeRouter from '../components/home/home.route.js'
-import driveRouter from '../components/drive/drive.route.js'
+import driveRouter from '../components/drive/driver.route.js'
 import customerRouter from '../components/customer/customer.route.js'
 import partnerRouter from '../components/partner/partner.route.js'
 import staffRouter from '../components/staff/staff.route.js'

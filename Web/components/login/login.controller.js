@@ -17,7 +17,7 @@ export async function login(req, res) {
       else if (data.type === 2) {
         loginModel.getInforPartner(data.id, (e, data2) => {
           store.set("user", data2);
-          res.redirect("/");
+          res.redirect("/partner");
         });
       }
 
@@ -25,7 +25,7 @@ export async function login(req, res) {
       else if (data.type === 3) {
         loginModel.getInforCustomer(data.id, (e, data2) => {
           store.set("user", data2);
-          res.redirect("/");
+          res.redirect("/customer");
         });
       }
 
@@ -33,7 +33,7 @@ export async function login(req, res) {
       else if (data.type === 4) {
         loginModel.getInforDriver(data.id, (e, data2) => {
           store.set("user", data2);
-          res.redirect("/");
+          res.redirect("/drive");
         });
       }
 
