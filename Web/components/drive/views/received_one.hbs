@@ -14,25 +14,25 @@
             <div class="card-body">
             <dl class="row">
               <dt class="col-sm-3">Name:</dt>
-              <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+              <dd class="col-sm-9">{{one.TenDonHang}}</dd>
 
               <dt class="col-sm-3">Product price:</dt>
-              <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+              <dd class="col-sm-9">{{one.PhiSanPham}}đ</dd>
 
               <dt class="col-sm-3">Shipping fee:</dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dd class="col-sm-9">{{one.PhiVanChuyen}}đ</dd>
 
-              <dt class="col-sm-3">Customer:</dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt class="col-sm-3">Customer ID:</dt>
+              <dd class="col-sm-9">{{one.MaKhachHang}}</dd>
 
-              <dt class="col-sm-3">Phone numeber:</dt>
-              <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+              <dt class="col-sm-3">Partner ID:</dt>
+              <dd class="col-sm-9">{{one.MaSoThue}}</dd>
 
-              <dt class="col-sm-3">Address: </dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt class="col-sm-3">Address:</dt>
+              <dd class="col-sm-9">{{one.DiaChiGiaoHang}}</dd>
 
-              <dt class="col-sm-3">Payment: </dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt class="col-sm-3">Payment:</dt>
+              <dd class="col-sm-9">{{one.HinhThucThanhToan}}</dd>
 
                <dt class="col-sm-3">State: </dt>
                <dd class="col-sm-9">
@@ -48,7 +48,7 @@
 
             <div class="text-center">
                 <form method="POST" action="/one?_method=GET">
-                   <a class="btn btn-info btn-lg btn-block" href="/drive/order_list">
+                   <a class="btn btn-info btn-lg btn-block" href="/drive/order_list/">
                     Save changes
                    </a>
                 </form>
