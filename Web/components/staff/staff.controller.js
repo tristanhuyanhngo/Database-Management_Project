@@ -6,14 +6,13 @@ export function paging(req, res) {
 
 export function pendingContract(req, res) {
   staffModel.pendingContract((e, data) => {
-      console.log(data);
+
       res.render("staff/views/contract_review",{data})
   });
 }
 
 export function renewalContract(req, res) {
     staffModel.renewalContract((e, data) => {
-        console.log(data);
-        res.render("staff/views/contract_review",{data})
+        res.render("staff/views/contract_renew",{data})
     });
   }

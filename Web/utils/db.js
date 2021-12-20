@@ -4,22 +4,8 @@ import sql from "mssql/msnodesqlv8.js";
 // HA: "DESKTOP-3218CJS\\",
 // PA: "MSI\\SQLEXPRESS"
 
- /* Server cua Huy Anh - Dung co xoa
- DESKTOP-SFNTJJK\\SQLEXPRESS
- *  server: "DESKTOP-3218CJS\\",
- user:"sa",
- password: "1",
- database:"HTDCHO",
- driver:"msnodesqlv8",
- */
-
-/**
- * Server cua PA
- *MSI\SQLEXPRESS
- */
-
 const config = {
-    server: "",
+    server: "MSI\\SQLEXPRESS",
     user:"sa",
     password: "1",
     database:"HTDCHO",
