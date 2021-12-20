@@ -2,32 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
 {{/section}}
 
-{{#section 'js'}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
-    <script>
-        $('#frmRegister').on('submit', function (e) {
-            e.preventDefault();
-
-            const username = $('#txtUsername').val();
-            if (username.length === 0) {
-                alert('Invalid data!');
-                return;
-            }
-
-            $.getJSON(`/account/is-available?user=${username}`, function (data) {
-                if (data === false) {
-                    alert('Not available!');
-                } else {
-                    $('#frmRegister').off('submit').submit();
-                }
-            });
-        });
-
-        $('#main').select();
-    </script>
-{{/section}}
-
-<form id="frmRegister" method="post">
+<form id="frmRegister" method="POST" action="/register/partner">
   <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -219,7 +194,7 @@
                   </div>
                 </div>
                 <!-- /.card-body -->
-
+                <p>{{messages.mess}}</p>
                 <div class="card-footer text-md-center">
                   <button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
                 </div>

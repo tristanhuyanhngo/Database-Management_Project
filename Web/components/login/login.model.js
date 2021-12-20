@@ -6,7 +6,7 @@ export default {
       const pool = await db.conn;
       const sqlstring =
        "select nguoidung as id, loainguoidung as type from taikhoan where TenDangNhap = @varDN and MatKhau = @varMK";
-      return await pool.request()
+      return pool.request()
       .input("varDN",db.sql.VarChar, log.username)
       .input("varMK",db.sql.VarChar, log.pass)
       .query(sqlstring, (e, data2) => {
@@ -18,12 +18,44 @@ export default {
     }
   },
 
-  async getInforDrive(id,result) {
+  async getInforDriver(id,result) {
     try {
       const pool = await db.conn;
       const sqlstring =
        "select * from taixe where mataixe = @varID";
-      return await pool.request()
+      return pool.request()
+      .input("varID",db.sql.Int, id)
+      .query(sqlstring, (e, data) => {
+        if (data.recordset.length>0) result(null, data.recordset[0]);
+        else result(true, null);
+      });
+    } catch {
+      result(true, null);
+    }
+  },
+
+  async getInforPartner(id,result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+       "select * from doitac where masothue = @varID";
+      return pool.request()
+      .input("varID",db.sql.Int, id)
+      .query(sqlstring, (e, data) => {
+        if (data.recordset.length>0) result(null, data.recordset[0]);
+        else result(true, null);
+      });
+    } catch {
+      result(true, null);
+    }
+  },
+
+  async getInforCustomer(id,result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+       "select * from khachhang where makhachhang = @varID";
+      return pool.request()
       .input("varID",db.sql.Int, id)
       .query(sqlstring, (e, data) => {
         if (data.recordset.length>0) result(null, data.recordset[0]);

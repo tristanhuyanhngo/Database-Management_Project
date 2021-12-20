@@ -5,10 +5,9 @@ export function paging(req, res) {
   res.render("login/views/login");
 }
 
-export function login(req, res) {
-  loginModel.checkLogin(req.body, (e, data) => {
+export async function login(req, res) {
+  await loginModel.checkLogin(req.body, (e, data) => {
     if (data != undefined && data != null) {
-
       //quản trị
       if (data.type === 1) {
         res.redirect("/");
@@ -16,20 +15,26 @@ export function login(req, res) {
 
       //đối tác
       else if (data.type === 2) {
-        res.redirect("/");
+        loginModel.getInforPartner(data.id, (e, data2) => {
+          store.set("user", data2);
+          res.redirect("/");
+        });
       }
 
       //khách hàng
       else if (data.type === 3) {
-        res.redirect("/");
+        loginModel.getInforCustomer(data.id, (e, data2) => {
+          store.set("user", data2);
+          res.redirect("/");
+        });
       }
-      
+
       //tài xế
       else if (data.type === 4) {
-        loginModel.getInforDrive(data.id,(e,data2)=>{
-          store.set("user",data2)
-        })
-        res.redirect("/");
+        loginModel.getInforDriver(data.id, (e, data2) => {
+          store.set("user", data2);
+          res.redirect("/");
+        });
       }
 
       //Nhân viên
