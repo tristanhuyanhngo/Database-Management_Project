@@ -14,10 +14,9 @@ app.use(bodyParser.json())
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
-app.use(flash());
-
 activate_view_middleware(app);
 activate_session_middleware(app);
+app.use(flash());
 activate_route_middleware(app);
 
 const port = 3000;
