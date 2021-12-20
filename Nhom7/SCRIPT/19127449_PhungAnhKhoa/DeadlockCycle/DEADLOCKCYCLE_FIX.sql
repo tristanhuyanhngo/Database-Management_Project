@@ -1,9 +1,9 @@
 ﻿CREATE PROC SP_ThongBao_HopDong_fix
-	@MaHopDong int,  @NoiDung nvarchar(50), @MaSoThue int,  @MaThongBao int,  @ThoiHan date
+	@MaHopDong int,  @NoiDung nvarchar(50), @MaSoThue int,  @ThoiHan date
 AS
 BEGIN TRAN
 	BEGIN TRY
-	    INSERT INTO ThongBao WITH (RowLock)  VALUES (@MaThongBao, @NoiDung, @MaSoThue) 
+	    INSERT INTO ThongBao WITH (RowLock) (NoiDung,MaSoThue)  VALUES (@NoiDung, @MaSoThue) 
 		WAITFOR DELAY '00:00:05'
 		IF NOT EXISTs(select * from HopDong where MaHopDong = @MaHopDong) 
 			BEGIN
@@ -11,8 +11,7 @@ BEGIN TRAN
 				ROLLBACK TRAN
 				RETURN 1
 			END
-		UPDATE HopDong SET TinhTrang = N'Đã Duyệt' WHERE MaHopDong = @MaHopDong
-		UPDATE HopDong SET ThoiGianHieuLuc = @ThoiHan WHERE MaHopDong = @MaHopDong
+		UPDATE HopDong WITH (RowLock) SET TinhTrang = N'Đã Duyệt', ThoiGianHieuLuc = @ThoiHan WHERE MaHopDong = @MaHopDong
 	END TRY
 	BEGIN CATCH
 		PRINT N'LỖI HỆ THỐNG'
@@ -24,14 +23,14 @@ COMMIT TRAN
 GO
 
 CREATE PROC SP_LapHopDong_DocThongBao_fix
-	@MaHopDong int,  @MaSoThue int
+@MaSoThue int
 AS
 BEGIN TRAN
 	BEGIN TRY
-	    INSERT INTO HopDong WITH (RowLock) (MaHopDong, MaSoThue) VALUES (@MaHopDong, @MaSoThue)
+	    INSERT INTO HopDong WITH (RowLock) (MaSoThue) VALUES (@MaSoThue)
 		WAITFOR DELAY '00:00:05'
 		SELECT NoiDung
-		FROM ThongBao
+		FROM ThongBao WITH (RowLock)
 		WHERE MaSoThue = @MaSoThue
 	END TRY
 	BEGIN CATCH

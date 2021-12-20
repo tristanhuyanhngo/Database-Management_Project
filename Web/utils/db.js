@@ -17,7 +17,7 @@ import sql from "mssql/msnodesqlv8.js";
  */
 
 const config = {
-    server: "DESKTOP-3218CJS\\",
+    server: "DESKTOP-I5NJLCP\\WANDER",
     user:"sa",
     password: "1",
     database:"HTDCHO",
