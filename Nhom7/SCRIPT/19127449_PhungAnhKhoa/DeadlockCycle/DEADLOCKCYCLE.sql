@@ -1,10 +1,10 @@
 ﻿CREATE PROC SP_ThongBao_HopDong
-	@MaHopDong int, @NoiDung nvarchar(50), @MaSoThue int,  @MaThongBao int,  @ThoiHan date
+	@MaHopDong int, @NoiDung nvarchar(50), @MaSoThue int, @ThoiHan date
 AS
 SET TRAN ISOLATION LEVEL serializable
 BEGIN TRAN
 	BEGIN TRY
-	    INSERT INTO ThongBao(MaThongBao,NoiDung,MasoThue) VALUES (@MaThongBao, @NoiDung, @MaSoThue) 
+	    INSERT INTO ThongBao(NoiDung,MasoThue) VALUES (@NoiDung,@MaSoThue) 
 		WAITFOR DELAY '00:00:05'
 		IF NOT EXISTs(select * from HopDong where MaHopDong = @MaHopDong) 
 			BEGIN
@@ -12,8 +12,7 @@ BEGIN TRAN
 				ROLLBACK TRAN
 				RETURN 1
 			END
-		UPDATE HopDong SET TinhTrang = N'Đã Duyệt' WHERE MaHopDong = @MaHopDong
-		UPDATE HopDong SET ThoiGianHieuLuc = @ThoiHan WHERE MaHopDong = @MaHopDong
+		UPDATE HopDong SET TinhTrang = N'Đã Duyệt', ThoiGianHieuLuc = @ThoiHan WHERE MaHopDong = @MaHopDong
 	END TRY
 	BEGIN CATCH
 		PRINT N'LỖI HỆ THỐNG'
@@ -25,12 +24,12 @@ COMMIT TRAN
 GO
 
 CREATE PROC SP_LapHopDong_DocThongBao	
-	@MaHopDong int,  @MaSoThue int
+@MaSoThue int
 AS
 SET TRAN ISOLATION LEVEL serializable
 BEGIN TRAN
 	BEGIN TRY
-	    INSERT INTO HopDong(MaHopDong, MaSoThue) VALUES (@MaHopDong, @MaSoThue)
+	    INSERT INTO HopDong(MaSoThue) VALUES (@MaSoThue)
 		WAITFOR DELAY '00:00:05'
 		SELECT NoiDung
 		FROM ThongBao
