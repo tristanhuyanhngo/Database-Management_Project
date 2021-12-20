@@ -8,31 +8,31 @@
         <div class="col-8">
           <div class="card">
             <div class="card-header primary">
-               <h4 class="card-title primary text-center">Order {{one.MaDonHang}}</h4>
+               <h4 class="card-title primary text-center">Order ID: {{one.MaDonHang}}</h4>
             </div>
 
             <div class="card-body">
             <dl class="row">
               <dt class="col-sm-3">Name:</dt>
-              <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+              <dd class="col-sm-9">{{one.TenDonHang}}</dd>
 
               <dt class="col-sm-3">Product price:</dt>
-              <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+              <dd class="col-sm-9">{{one.PhiSanPham}}đ</dd>
 
               <dt class="col-sm-3">Shipping fee:</dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dd class="col-sm-9">{{one.PhiVanChuyen}}đ</dd>
 
-              <dt class="col-sm-3">Customer:</dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt class="col-sm-3">Customer ID:</dt>
+              <dd class="col-sm-9">{{one.MaKhachHang}}</dd>
 
-              <dt class="col-sm-3">Phone numeber:</dt>
-              <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+              <dt class="col-sm-3">Partner ID:</dt>
+              <dd class="col-sm-9">{{one.MaSoThue}}</dd>
 
-              <dt class="col-sm-3">Address: </dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt class="col-sm-3">Address:</dt>
+              <dd class="col-sm-9">{{one.DiaChiGiaoHang}}</dd>
 
-              <dt class="col-sm-3">Payment: </dt>
-              <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+              <dt class="col-sm-3">Payment:</dt>
+              <dd class="col-sm-9">{{one.HinhThucThanhToan}}</dd>
             </dl>
 
             <div class="text-center">
