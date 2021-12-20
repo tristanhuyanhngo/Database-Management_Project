@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 
 // Middleware
 import activate_view_middleware from './middlewares/view.mdw.js';
@@ -8,12 +9,13 @@ import activate_session_middleware from './middlewares/session.mdw.js';
 
 const app = express();
 
-activate_view_middleware(app);
-activate_route_middleware(app);
-activate_session_middleware(app);
-
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
+
+activate_view_middleware(app);
+activate_session_middleware(app);
+activate_route_middleware(app);
 
 
 const port = 3000;

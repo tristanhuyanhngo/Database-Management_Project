@@ -20,7 +20,7 @@ import sql from "mssql/msnodesqlv8.js";
  *MSI\SQLEXPRESS
  */
 const config = {
-    server: "MSI\\SQLEXPRESS",
+    server: "DESKTOP-I5NJLCP\\WANDER",
     user:"sa",
     password: "1",
     database:"HTDCHO",

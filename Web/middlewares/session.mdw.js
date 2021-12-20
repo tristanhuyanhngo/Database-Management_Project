@@ -1,5 +1,5 @@
 import session from 'express-session';
-
+import flash from 'express-flash';
 export default function (app) {
     app.set('trust proxy', 1) // trust first proxy
     app.use(session({
@@ -10,4 +10,5 @@ export default function (app) {
             // secure: true
         }
     }))
+    app.use(flash());
 }

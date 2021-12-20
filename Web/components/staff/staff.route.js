@@ -1,9 +1,8 @@
 import express from 'express';
-import { paging,login } from './login.controller.js';
+import { paging } from './staff.controller.js';
 
 const router = express.Router();
 
 router.get('/', paging);
-router.post('/', login);
 
 export default router;

@@ -11,16 +11,20 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
     "debug": "^4.3.3",
     "express": "^4.17.1",
+    "express-flash": "0.0.2",
     "express-handlebars": "^6.0.1",
     "express-session": "^1.17.2",
+    "flash": "^1.1.0",
     "jshint": "^2.13.1",
     "knex": "^0.95.14",
     "morgan": "^1.10.0",
     "msnodesqlv8": "^2.4.3",
     "mssql": "^7.3.0",
     "mysql2": "^2.3.3",
+    "store": "^2.0.12",
     "tedious": "^14.0.0"
   },
   "devDependencies": {

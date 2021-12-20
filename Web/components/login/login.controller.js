@@ -7,7 +7,7 @@ export function paging(req, res) {
 export function login(req, res) {
   loginModel.checkLogin(req.body, (e, data) => {
     if (data != undefined && data != null) {
-      res.locals.id = data.id;
+      console.log(data)
       res.redirect("/");
     } else {
       res.status(404).json({ errors: "error" });

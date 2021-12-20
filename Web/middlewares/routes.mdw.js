@@ -16,6 +16,7 @@ export default function (app) {
     app.use('/login',loginRouter)
     app.use('/register',registerRouter)
     app.use('/drive',driveRouter)
+    app.use('/staff',driveRouter)
     app.use('/public', express.static('public'));
     app.use(express.static(path.join(__dirname, 'public')))
 };

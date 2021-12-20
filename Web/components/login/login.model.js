@@ -2,10 +2,11 @@ import db from "../../utils/db.js";
 
 export default {
   async checkLogin(log,result) {
+    console.log(log)
     try {
       const pool = await db.conn;
       const sqlstring =
-       "select nguoidung as id from taikhoan where TenDangNhap = @varDN and MatKhau = @varMK";
+       "select nguoidung as id, loainguoidung as type from taikhoan where TenDangNhap = @varDN and MatKhau = @varMK";
       return await pool.request()
       .input("varDN",db.sql.VarChar, log.username)
       .input("varMK",db.sql.VarChar, log.pass)
