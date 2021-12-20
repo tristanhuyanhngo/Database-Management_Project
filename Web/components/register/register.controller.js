@@ -7,7 +7,7 @@ export function driver(req, res) {
 
 export function driverRegister(req, res) {
   registerModel.driverRegister(req.body, (e, data) => {
-    res.redirect("/register/register");
+    res.redirect("/register/drive");
   });
 }
 
