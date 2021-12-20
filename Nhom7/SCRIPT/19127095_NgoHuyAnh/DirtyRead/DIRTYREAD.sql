@@ -1,6 +1,6 @@
 ﻿
 CREATE PROC SP_DatHang
-	@MaSoThue int,  @MaKhachHang int, @KhuVuc nvarchar(50)
+	@MaSoThue int,  @MaKhachHang int,  @MaDonHang int,  @KhuVuc nvarchar(50)
 AS
 BEGIN TRAN
 	IF NOT EXISTS(select * from DoiTac where MaSoThue = @MaSoThue)
@@ -10,8 +10,8 @@ BEGIN TRAN
 			RETURN 1
 		END
 
-	INSERT INTO DonHang(MaSoThue,MaKhachHang,TinhTrang,KhuVuc,NgayDat) 
-	values (@MaSoThue, @MaKhachHang,N'Chờ', @KhuVuc,getdate())
+	INSERT INTO DonHang(MaDonHang,MaSoThue,MaKhachHang,TinhTrang,KhuVuc,NgayDat) 
+	values (@MaDonHang,@MaSoThue, @MaKhachHang,N'Chờ', @KhuVuc,getdate())
 
 	WAITFOR DELAY '0:0:05'
 

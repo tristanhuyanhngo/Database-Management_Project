@@ -6,3 +6,7 @@ IF @RT = 1
 ELSE
 	PRINT N'Xem THÀNH CÔNG'
 
+select * from DonHang where MaSoThue = '1' 
+	and DAY(DonHang.NgayDat) = DAY(getdate())
+	and MONTH(DonHang.NgayDat) = MONTH(getdate())
+	and YEAR(DonHang.NgayDat) = YEAR(getdate())
