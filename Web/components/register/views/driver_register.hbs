@@ -1,8 +1,36 @@
+{{#section 'css'}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
+{{/section}}
 
-<div class="wrapper">
+{{#section 'js'}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+        $('#frmRegister').on('submit', function (e) {
+            e.preventDefault();
 
+            const username = $('#txtUsername').val();
+            if (username.length === 0) {
+                alert('Invalid data!');
+                return;
+            }
+
+            $.getJSON(`/account/is-available?user=${username}`, function (data) {
+                if (data === false) {
+                    alert('Not available!');
+                } else {
+                    $('#frmRegister').off('submit').submit();
+                }
+            });
+        });
+
+        $('#main').select();
+    </script>
+{{/section}}
+
+<form id="frmRegister" method="post">
+  <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+    <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
@@ -24,7 +52,7 @@
             <div class="row">
               <!-- Form Element sizes -->
               <div class="card">
-                <img src="../public/driver_register.jpg" class="img-fluid" alt="driver_register.jpg">
+                <img src="../public/driver_register.png" class="img-fluid" alt="driver_register.png">
               </div>
             </div>
             <!-- /.card -->
@@ -42,7 +70,7 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="fullname"><strong>Full Name</strong></label>
-                    <input required name="fullname" type="text" class="form-control" placeholder="Enter full name">
+                    <input required name="fullname" type="text" class="form-control" placeholder="Enter full name" id="main">
                   </div>
                   <div class="form-group">
                     <label for="identity"><strong>Identity Card</strong></label>
@@ -148,6 +176,10 @@
                     <label for="pass"><strong>Password</strong></label>
                     <input required name="pass" type="password" class="form-control" placeholder="Enter password">
                   </div>
+                  <div class="form-group">
+                    <label for="confirm_pass"><strong>Confirm Password</strong></label>
+                    <input required name="confirm_pass" type="password" class="form-control" placeholder="Confirm password">
+                  </div>
                   <div class="form-check">
                     <input required type="checkbox" class="form-check-input" >
                     <label class="form-check-label" for="exampleCheck1">I have read and accept the terms and conditions</label>
@@ -172,5 +204,7 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    </div>
   </div>
   <!-- /.content-wrapper -->
+</form>

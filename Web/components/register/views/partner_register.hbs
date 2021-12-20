@@ -23,78 +23,221 @@
             });
         });
 
-        $('#txtDOB').datetimepicker({
-            timepicker: false,
-            format: 'd/m/Y',
-            mask: true
-        });
-
-        $('#txtUsername').select();
+        $('#main').select();
     </script>
 {{/section}}
 
 <form id="frmRegister" method="post">
-    <div class="card">
-        <h4 class="card-header">
-            Customer Account Registration
-        </h4>
-        <div class="card-body">
-            <div class="form-group">
-                <label htmlFor="txtUsername">Username</label>
-                <input type="text" class="form-control" id="txtUsername" name="username"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtPassword">Password</label>
-                <input type="password" class="form-control" id="txtPassword" name="password"/>
-            </div>
-            <div class="form-group mb-5">
-                <label htmlFor="txtConfirm">Confirm Password</label>
-                <input type="password" class="form-control" id="txtConfirm"/>
-            </div>
+  <div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Sign up as a partner</h1>
+          </div>
 
-            <h5>Profile Information</h5>
-            <div class="form-group">
-                <label htmlFor="txtName">Partner Name</label>
-                <input type="text" class="form-control" id="txtName" name="name"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtRepresentative">Representative</label>
-                <input type="text" class="form-control" id="txtName" name="representative"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtEmail">Email</label>
-                <input type="text" class="form-control" id="txtEmail" name="email"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtCity">City</label>
-                <input type="text" class="form-control" id="txtCity" name="city"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtDistrict">District</label>
-                <input type="text" class="form-control" id="txtDistrict" name="district"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtAddress">Address</label>
-                <input type="text" class="form-control" id="txtAddess" name="address"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtPhone">Phone</label>
-                <input type="text" class="form-control" id="txtPhone" name="phone"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtBranchNumbers">Branch Numbers</label>
-                <input type="text" class="form-control" id="txtBranchNumbers" name="branch_numbers"/>
-            </div>
-            <div class="form-group">
-                <label htmlFor="txtOrders">Orders per day</label>
-                <input type="text" class="form-control" id="txtOrders" name="orders"/>
-            </div>
         </div>
-        <div class="card-footer text-muted">
-            <button type="submit" class="btn btn-primary">
-                <i class="fa fa-check" aria-hidden="true"></i>
-                Save
-            </button>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <div class="row">
+              <!-- Form Element sizes -->
+              <div class="card">
+                <img src="../public/partner_register.png" class="img-fluid" alt="partner_register.png">
+              </div>
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Partner's form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form action="/register/driver" method="POST">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="fullname"><strong>Partner's Full Name</strong></label>
+                    <input required name="Pfullname" type="text" class="form-control" placeholder="Enter full name" id="main">
+                  </div>
+                  <div class="form-group">
+                    <label for="fullname"><strong>Deputy's Full Name</strong></label>
+                    <input required name="Dfullname" type="text" class="form-control" placeholder="Enter full name">
+                  </div>
+                  <div class="form-group">
+                    <label><strong>Working city area</strong></label>
+                    <select name="area" class="form-control">
+                      <option>An Giang</option>
+                      <option>Bà Rịa - Vũng Tàu</option>
+                      <option>Bắc Giang</option>
+                      <option>Bắc Kạn</option>
+                      <option>Bạc Liêu</option>
+                      <option>Bắc Ninh</option>
+                      <option>Bến Tre</option>
+                      <option>Bình Định</option>
+                      <option>Bình Dương</option>
+                      <option>Bình Phước</option>
+                      <option>Bình Thuận</option>
+                      <option>Cà Mau</option>
+                      <option>Cao Bằng</option>
+                      <option>Đắk Lắk</option>
+                      <option>Đắk Nông</option>
+                      <option>Điện Biên</option>
+                      <option>Đồng Nai</option>
+                      <option>Đồng Tháp</option>
+                      <option>Gia Lai</option>
+                      <option>Hà Giang</option>
+                      <option>Hà Nam</option>
+                      <option>Hà Tĩnh</option>
+                      <option>Hải Dương</option>
+                      <option>Hậu Giang</option>
+                      <option>Hòa Bình</option>
+                      <option>Hưng Yên</option>
+                      <option>Khánh Hòa</option>
+                      <option>Kiên Giang</option>
+                      <option>Kon Tum</option>
+                      <option>Lai Châu</option>
+                      <option>Lâm Đồng</option>
+                      <option>Lạng Sơn</option>
+                      <option>Lào Cai</option>
+                      <option>Long An</option>
+                      <option>Nam Định</option>
+                      <option>Nghệ An</option>
+                      <option>Ninh Bình</option>
+                      <option>Ninh Thuận</option>
+                      <option>Phú Thọ</option>
+                      <option>Quảng Bình</option>
+                      <option>Quảng Ngãi</option>
+                      <option>Quảng Ninh</option>
+                      <option>Sóc Trăng</option>
+                      <option>Sơn La</option>
+                      <option>Tây Ninh</option>
+                      <option>Thái Bình</option>
+                      <option>Thái Nguyên</option>
+                      <option>Thanh Hóa</option>
+                      <option>Tiền Giang</option>
+                      <option>Trà Vinh</option>
+                      <option>Tuyên Quang</option>
+                      <option>Vĩnh Long</option>
+                      <option>Vĩnh Phúc</option>
+                      <option>Phú Yên	Cần Thơ</option>
+                      <option>Đà Nẵng</option>
+                      <option>Hải Phòng</option>
+                      <option>Hải Phòng</option>
+                      <option>Hà Nội</option>
+                      <option>TP HCM</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label><strong>Working district area</strong></label>
+                    <select name="district" class="form-control">
+                      <option>Quận 1</option>
+                      <option>Quận 2</option>
+                      <option>Quận 3</option>
+                      <option>Quận 4</option>
+                      <option>Quận 5</option>
+                      <option>Quận 6</option>
+                      <option>Quận 7</option>
+                      <option>Quận 8</option>
+                      <option>Quận 9</option>
+                      <option>Quận 10</option>
+                      <option>Quận 11</option>
+                      <option>Quận 12</option>
+                      <option>Quận Bình Tân</option>
+                      <option>Quận Bình Thạnh</option>
+                      <option>Quận Gò Vấp</option>
+                      <option>Quận Phú Nhuận</option>
+                      <option>Quận Tân Bình</option>
+                      <option>Quận Tân Phú</option>
+                      <option>Quận Thủ Đức</option>
+                      <option>Huyện Bình Chánh</option>
+                      <option>Huyện Cần Giờ</option>
+                      <option>Huyện Củ Chi</option>
+                      <option>Huyện Hóc Môn</option>
+                      <option>Huyện Nhà Bè</option>
+                    </select>
+                  </div>
+
+                   <div class="form-group">
+                    <label for="branches"><strong>Number of Branches</strong></label>
+                    <input required name="branches" type="text" class="form-control" placeholder="Enter number of branches">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="orders"><strong>Number of Orders per Day</strong></label>
+                    <input required name="orders" type="text" class="form-control" placeholder="Enter number of orders">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="goods"><strong>Type of Goods</strong></label>
+                    <input required name="goods" type="text" class="form-control" placeholder="Enter type of goods">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="address"><strong>Working address</strong></label>
+                    <input required name="address" type="text" class="form-control" placeholder="Enter home address">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="phone"><strong>Phone number</strong></label>
+                    <input required name="phone" type="text" class="form-control" placeholder="Enter phone number">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email"><strong>Email</strong></label>
+                    <input required name="email" type="email" class="form-control"  placeholder="Enter email">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="username"><strong>Username</strong></label>
+                    <input required name="username" type="text" class="form-control" placeholder="Enter username">
+                  </div>
+                  <div class="form-group">
+                    <label for="pass"><strong>Password</strong></label>
+                    <input required name="pass" type="password" class="form-control" placeholder="Enter password">
+                  </div>
+                  <div class="form-group">
+                    <label for="confirm_pass"><strong>Confirm Password</strong></label>
+                    <input required name="confirm_pass" type="password" class="form-control" placeholder="Confirm password">
+                  </div>
+                  <div class="form-check">
+                    <input required type="checkbox" class="form-check-input" >
+                    <label class="form-check-label" for="exampleCheck1">I have read and accept the terms and conditions</label>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer text-md-center">
+                  <button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+
+          <!--/.col (right) -->
         </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
     </div>
+  </div>
+  <!-- /.content-wrapper -->
 </form>
