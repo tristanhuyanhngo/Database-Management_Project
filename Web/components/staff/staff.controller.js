@@ -29,3 +29,16 @@ export function updateDate(req, res) {
     res.redirect('/staff/extend_contract/');
 }
 
+export function mail(req,res) {
+    //Mã hợp đồng
+    const id=req.params.id;
+    //Lấy ra mã partner của hợp đồng
+    const partner="Hehe";
+    //Biến PA dùng để viết thông báo bên FE
+    const type=req.params.msg;
+    var msg;
+    if (type===1) msg="review and accepted";
+    else msg="extended";
+
+    res.render('staff/views/mail',{msg, partner, id});
+}
