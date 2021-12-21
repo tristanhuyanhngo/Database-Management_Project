@@ -70,10 +70,45 @@ export default {
         "update hopdong set ThoiGianHieuLuc = @varDate where MaHopDong = @varID";
       return pool
         .request()
-        .input('varDate',db.sql.Date,date)
-        .input('varID',db.sql.Int,id)
+        .input("varDate", db.sql.Date, date)
+        .input("varID", db.sql.Int, id)
         .query(sqlstring, (e, data) => {
           if (!e) result(null, "thành công");
+          else result(true, null);
+        });
+    } catch {
+      result(true, null);
+    }
+  },
+
+  async mail(id, result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+        "select doitac.MaSoThue as id, doitac.TenDoitac as name  from hopdong,doitac where MaHopDong = @varID and doitac.masothue = hopdong.masothue";
+      return pool
+        .request()
+        .input("varID", db.sql.Int, id)
+        .query(sqlstring, (e, data) => {
+          if (!e) result(null, data.recordset[0]);
+          else result(true, null);
+        });
+    } catch {
+      result(true, null);
+    }
+  },
+
+  async sendMail(id, msg, result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+        "insert into ThongBao(MaSoThue,NoiDung) values(@varID, @varMSG)";
+      return pool
+        .request()
+        .input("varID", db.sql.Int, id)
+        .input("varMSG", db.sql.NVarChar, msg)
+        .query(sqlstring, (e, data) => {
+          if (!e) result(null, "Thành công");
           else result(true, null);
         });
     } catch {

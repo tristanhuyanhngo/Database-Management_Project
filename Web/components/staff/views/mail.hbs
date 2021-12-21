@@ -19,13 +19,14 @@
             <h5 class="card-header">Notification's content</h5>
             <div class="card-body">
             <p>Dear <strong>{{partner}}</strong>,<p>
-            <p>We have <strong>{{msg}}</strong> your contract (ID: <strong>{{id}}</strong>).</p>
-            <p>Please contact us if you did not request for this contract review/extension.</p>
-            <p>Best regard,</p>
-            <p><i>(tên account của nhân viên)</i></p>
-            <div class="text-right">
-            <a href="/" class="btn btn-primary ">Send</a>
-            </div>
+            <p>We have <strong>{{msg}}</strong> your contract (ID: <strong>{{idhd}}</strong>).</p>
+            <form action="/staff/mail/{{iddt}}" method="POST"> 
+              <textarea name="msg" rows="3" cols="70" type="text"></textarea>
+              <div class="text-right">
+                <button type="submit" class="btn btn-primary ">Send</button>
+              </div>
+            </form>
+        
             </div>
             <!-- /.card-header -->
             <!-- /.card-body -->

@@ -28,15 +28,17 @@ export function updateDate(req, res) {
 }
 
 export function mail(req, res) {
-  //Mã hợp đồng
-  const id = req.params.id;
-  //Lấy ra mã partner của hợp đồng
-  const partner = "Hehe";
-  //Biến PA dùng để viết thông báo bên FE
-  const type = req.params.msg;
-  var msg;
-  if (type === 1) msg = "review and accepted";
-  else msg = "extended";
+  staffModel.mail(req.params.id, (e, data) => {
+    res.render("staff/views/mail", {
+      partner: data.name,
+      iddt: data.id,
+      idhd: req.params.id,
+    });
+  });
+}
 
-  res.render("staff/views/mail", { msg, partner, id });
+export function sendMail(req, res) {
+  staffModel.sendMail(req.params.id, req.body.msg, (e, data) => {
+    res.redirect("/");
+  });
 }

@@ -46,7 +46,7 @@
                           value="Extend">
                           </input>
 
-                          <a class="btn btn-info btn-sm" href="/staff/mail/{{this.MaHopDong}}/2">
+                          <a class="btn btn-info btn-sm" href="/staff/mail/{{this.MaHopDong}}">
                              <i class="fas fa-envelope"></i>
                                   Email
                           </a>
@@ -72,7 +72,6 @@
 <!-- /.content-wrapper -->
 <script type="text/javascript">
     function getNewDate(id) {
-       var retVal = prompt("Nhập thời hạn mới cho hợp đồng:","yyyy-mm-dd");
-       window.location.href=`/staff/update_time?idVal=${id}&retVal=${retVal}`
+       window.location.href=`/staff/update_time?idVal=${id}`
        }
 </script>

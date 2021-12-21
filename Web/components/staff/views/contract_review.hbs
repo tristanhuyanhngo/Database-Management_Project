@@ -45,7 +45,7 @@
                           onClick="getConfirmation({{this.MaHopDong}})"
                           value="Review">
                       </input>
-                      <a class="btn btn-info btn-sm" href="/staff/mail/{{this.MaHopDong}}/1">
+                      <a class="btn btn-info btn-sm" href="/staff/mail/{{this.MaHopDong}}">
                            <i class="fas fa-envelope"></i>
                            Email
                        </a>
@@ -71,7 +71,6 @@
 <!-- /.content-wrapper -->
 <script type="text/javascript">
     function getConfirmation(id) {
-       var retVal = confirm("Xác nhận hợp đồng này?");
        if( retVal == true ) window.location.href=`/staff/update?idVal=${id}`
     }
 </script>
