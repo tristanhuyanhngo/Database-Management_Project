@@ -3,7 +3,7 @@ import customerModel from './customer.model.js'
 
 const router = express.Router();
 
-router.get('/home',function (req, res) {
+router.get('/',function (req, res) {
     res.render('customer/views/home');
 });
 

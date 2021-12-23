@@ -1,13 +1,13 @@
 import express from 'express';
-import {paging, order_list, order_one, received_list, received_one} from './driver.controller.js';
+import {paging, order_list, order_one, received_list, received_one, get_order_one} from './driver.controller.js';
 const router = express.Router();
 
-router.get('/home', paging);
+router.get('/', paging);
 
 //NOT RECEIVED ORDER LIST
 router.get('/order_list', order_list);
 router.get('/order_list/:id', order_one);
-router.post('/order_list/:id', order_one);
+router.post('/order_list/:id', get_order_one);
 
 //DRIVER RECEIVED LIST
 router.get('/received_list',received_list);

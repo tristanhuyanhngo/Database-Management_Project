@@ -18,6 +18,13 @@ export function order_one(req, res) {
   });
 }
 
+export function get_order_one(req, res) {
+  console.log(req.params.id)
+  driveModel.get_order_one(req.params.id,store.get("user").MaTaiXe, (e, data) => {
+    res.redirect("/driver")
+  });
+}
+
 export function received_list(req, res) {
   const area_id = store.get("user").KhuVucHoatDong;
   driveModel.getDriverOrder(store.get("user").MaTaiXe, (e, data) => {
