@@ -1,7 +1,7 @@
 import staffModel from "./staff.model.js";
 
 export function paging(req, res) {
-  res.render("home/views/home");
+  res.render("staff/views/home");
 }
 
 export function pendingContract(req, res) {
