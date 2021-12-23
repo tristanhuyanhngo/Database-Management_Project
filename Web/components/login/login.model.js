@@ -65,4 +65,21 @@ export default {
       result(true, null);
     }
   },
+
+  async getInforStaffr(id,result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+       "select * from nhanvien where nhanvien = @varID";
+      return pool.request()
+      .input("varID",db.sql.Int, id)
+      .query(sqlstring, (e, data) => {
+        if (data.recordset.length>0) result(null, data.recordset[0]);
+        else result(true, null);
+      });
+    } catch {
+      result(true, null);
+    }
+  },
+
 };

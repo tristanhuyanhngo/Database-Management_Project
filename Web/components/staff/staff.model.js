@@ -28,7 +28,7 @@ export default {
     try {
       const pool = await db.conn;
       const sqlstring =
-        "select * from HopDong where HopDong.ThoiGianHieuLuc < getdate()";
+        "select * from HopDong where HopDong.ThoiGianHieuLuc < getdate() and TinhTrang = N'Đã duyệt' ";
       return await pool.request().query(sqlstring, (e, data) => {
         for (let i = 0; i < data.recordset.length; i++) {
           if (data.recordset[i].ThoiGianHieuLuc != null) {
@@ -65,17 +65,23 @@ export default {
 
   async updateDate(id, date, result) {
     try {
-      const pool = await db.conn;
-      const sqlstring =
-        "update hopdong set ThoiGianHieuLuc = @varDate where MaHopDong = @varID";
-      return pool
-        .request()
-        .input("varDate", db.sql.Date, date)
-        .input("varID", db.sql.Int, id)
-        .query(sqlstring, (e, data) => {
-          if (!e) result(null, "thành công");
-          else result(true, null);
-        });
+      console.log(date)
+      if(date!=null&&date!=undefined)
+      {
+        const pool = await db.conn;
+        const sqlstring =
+          "update hopdong set ThoiGianHieuLuc = @varDate where MaHopDong = @varID";
+        return pool
+          .request()
+          .input("varDate", db.sql.Date, date)
+          .input("varID", db.sql.Int, id)
+          .query(sqlstring, (e, data) => {
+            if (!e) result(null, "thành công");
+            else result(true, null);
+          });
+      }
+      else result(true, null);
+     
     } catch {
       result(true, null);
     }

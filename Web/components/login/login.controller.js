@@ -17,7 +17,7 @@ export async function login(req, res) {
       else if (data.type === 2) {
         loginModel.getInforPartner(data.id, (e, data2) => {
           store.set("user", data2);
-          res.redirect("/partner");
+          res.redirect("/partner/home");
         });
       }
 
@@ -25,7 +25,7 @@ export async function login(req, res) {
       else if (data.type === 3) {
         loginModel.getInforCustomer(data.id, (e, data2) => {
           store.set("user", data2);
-          res.redirect("/customer");
+          res.redirect("/customer/home");
         });
       }
 
@@ -33,14 +33,18 @@ export async function login(req, res) {
       else if (data.type === 4) {
         loginModel.getInforDriver(data.id, (e, data2) => {
           store.set("user", data2);
-          res.redirect("/drive");
+          res.redirect("/driver/home");
         });
       }
 
       //Nhân viên
       else if (data.type === 5) {
-        res.redirect("/");
+        loginModel.getInforDriver(data.id, (e, data2) => {
+          store.set("user", data2);
+          res.redirect("/staff/home");
+        });
       }
+
     } else {
       res.redirect("/login");
     }

@@ -72,6 +72,7 @@
 <!-- /.content-wrapper -->
 <script type="text/javascript">
     function getNewDate(id) {
-       window.location.href=`/staff/update_time?idVal=${id}`
+      let retVal = prompt("Nhập thời hạn mới cho hợp đồng:","yyyy-mm-dd");
+       window.location.href=`/staff/update_time?idVal=${id}&retVal=${retVal}`
        }
 </script>

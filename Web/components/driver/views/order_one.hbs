@@ -8,7 +8,7 @@
         <div class="col-8">
           <div class="card">
             <div class="card-header primary">
-               <h4 class="card-title primary text-center">Order {{one.MaDonHang}}</h4>
+               <h4 class="card-title primary text-center">Order ID: {{one.MaDonHang}}</h4>
             </div>
 
             <div class="card-body">
@@ -33,23 +33,12 @@
 
               <dt class="col-sm-3">Payment:</dt>
               <dd class="col-sm-9">{{one.HinhThucThanhToan}}</dd>
-
-               <dt class="col-sm-3">State: </dt>
-               <dd class="col-sm-9">
-               <form>
-                <select class="custom-select rounded-0" id="state" name="state">
-                  <option>Đã giao</option>
-                  <option>Đang giao</option>
-                  <option>Chờ</option>
-                </select>
-               </form>
-               </dd>
             </dl>
 
             <div class="text-center">
                 <form method="POST" action="/one?_method=GET">
-                   <a class="btn btn-info btn-lg btn-block" href="/drive/order_list/">
-                    Save changes
+                   <a class="btn btn-info btn-lg btn-block" href="/driver/order_list">
+                    Take this order
                    </a>
                 </form>
              </div>

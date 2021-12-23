@@ -6,9 +6,11 @@ export function driver(req, res) {
 
 export function driverRegister(req, res) {
   registerModel.driverRegister(req.body, (e, data) => {
-    if (!e) req.flash("mess", "Đăng ký thành công");
-    else req.flash("mess", "Đăng ký thất bại");
-    res.redirect("/register/driver");
+    if (!e) res.redirect("/login");
+    else {
+      req.flash("mess", "Đăng ký thất bại");
+      res.redirect("/register/driver");
+    }
   });
 }
 
@@ -18,9 +20,11 @@ export function customer(req, res) {
 
 export function customerRegister(req, res) {
   registerModel.customerRegister(req.body, (e, data) => {
-    if (!e) req.flash("mess", "Đăng ký thành công");
-    else req.flash("mess", "Đăng ký thất bại");
-    res.redirect("/register/customer");
+    if (!e) res.redirect("/login");
+    else {
+      req.flash("mess", "Đăng ký thất bại");
+      res.redirect("/register/customer");
+    }
   });
 }
 
@@ -30,8 +34,10 @@ export function partner(req, res) {
 
 export function partnerRegister(req, res) {
   registerModel.partnerRegister(req.body, (e, data) => {
-    if (!e) req.flash("mess", "Đăng ký thành công");
-    else req.flash("mess", "Đăng ký thất bại");
-    res.redirect("/register/partner");
+    if (!e) res.redirect("/login");
+    else {
+      req.flash("mess", "Đăng ký thất bại");
+      res.redirect("/register/partner");
+    }
   });
 }
