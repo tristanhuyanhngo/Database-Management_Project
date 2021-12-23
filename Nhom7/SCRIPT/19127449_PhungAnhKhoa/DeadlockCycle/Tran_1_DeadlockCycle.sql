@@ -1,8 +1,11 @@
-﻿DECLARE @RT INT
-EXEC @RT = SP_ThongBao_HopDong '1',N'Chúng tôi đã duyệt hợp đồng cho bạn','1' , '2022-1-1'
---EXEC @RT = SP_ThongBao_HopDong_fix '2',N'Chúng tôi đã duyệt hợp đồng cho bạn','4','2022-1-1'
+﻿-- xem đơn hàng
+select DonHang.* from DonHang,TaiXe where TinhTrang = N'Chờ' and KhuVuc = KhuVucHoatDong and TaiXe.MaTaiXe = '16' and DonHang.MaTaiXe is null
+-- đặt đơn hàng
+DECLARE @RT INT
+EXEC @RT = SP_NhanDonHang_deadlock '16','13'
+--EXEC @RT = SP_NhanDonHang_deadlock_fix '16','14'
 IF @RT = 1
-	PRINT N'Làm thất bại'
+	PRINT N'THÊM THẤT BẠI'
 ELSE
-	PRINT N'Làm thành công'
+	PRINT N'THÊM THÀNH CÔNG'
 

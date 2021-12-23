@@ -3,7 +3,6 @@
 AS
 SET TRAN ISOLATION LEVEL SERIALIZABLE
 BEGIN TRAN
-	BEGIN TRY
 		IF NOT EXISTS(select * from TaiXe where MaTaiXe = @MaTaiXe)
 			BEGIN
 				PRINT N'Tài xế ' + CAST(@MaTaiXe AS VARCHAR(10)) + N' không tồn tại'
@@ -23,12 +22,5 @@ BEGIN TRAN
 		--Chọn 1 đơn để nhận
 		update DonHang set TinhTrang = N'Đang giao' where @MaDonHang = MaDonHang 
 		update DonHang set MaTaiXe = @MaTaiXe where @MaDonHang = MaDonHang 
-	END TRY
-	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'
-		ROLLBACK TRAN
-		RETURN 1	
-	END CATCH
-
 COMMIT TRAN
 RETURN 0

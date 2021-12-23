@@ -1,9 +1,9 @@
 ﻿-- xem đơn hàng
-select DonHang.* from DonHang,TaiXe where TinhTrang = N'Chờ' and KhuVuc = KhuVucHoatDong and TaiXe.MaTaiXe = '5' and DonHang.MaTaiXe is null
+select DonHang.* from DonHang,TaiXe where TinhTrang = N'Chờ' and KhuVuc = KhuVucHoatDong and TaiXe.MaTaiXe = '17' and DonHang.MaTaiXe is null
 
 -- đặt đơn hàng
 DECLARE @RT INT
-EXEC @RT = SP_NhanDonHang '5','706'
+EXEC @RT = SP_NhanDonHang '17','13'
 --EXEC @RT = SP_NhanDonHang_fix '5','555'
 IF @RT = 1
 	PRINT N'THÊM THẤT BẠI'

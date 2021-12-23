@@ -1,43 +1,23 @@
-﻿CREATE PROC SP_ThongBao_HopDong
-	@MaHopDong int, @NoiDung nvarchar(50), @MaSoThue int, @ThoiHan date
+﻿CREATE PROC SP_NhanDonHang_deadlock
+	@MaTaiXe int,  @MaDonHang int
 AS
-SET TRAN ISOLATION LEVEL serializable
+SET TRAN ISOLATION LEVEL REPEATABLE READ
 BEGIN TRAN
-	BEGIN TRY
-	    INSERT INTO ThongBao(NoiDung,MasoThue) VALUES (@NoiDung,@MaSoThue) 
-		WAITFOR DELAY '00:00:05'
-		IF NOT EXISTs(select * from HopDong where MaHopDong = @MaHopDong) 
+		IF NOT EXISTs(select * from TaiXe where MaTaiXe = @MaTaiXe)
 			BEGIN
-				PRINT N'Hợp đồng ' + CAST(@MaHopDong AS VARCHAR(10)) + N' Không Tồn Tại'
+				PRINT N'Tài Xế' + CAST(@MaTaiXe AS VARCHAR(10)) + N' Không Tồn Tại'
 				ROLLBACK TRAN
 				RETURN 1
 			END
-		UPDATE HopDong SET TinhTrang = N'Đã Duyệt', ThoiGianHieuLuc = @ThoiHan WHERE MaHopDong = @MaHopDong
-	END TRY
-	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'
-		ROLLBACK TRAN
-		RETURN 1
-	END CATCH
-COMMIT TRAN
+		IF NOT EXISTS(select * from DonHang,TaiXe where DonHang.KhuVuc = Taixe.KhuVucHoatDong and DonHang.MaTaiXe is null
+		and Taixe.MaTaiXe = @MaTaiXe and TinhTrang = N'Chờ' and MaDonHang = @MaDonHang)
+			BEGIN
+				PRINT N'Đặt hàng không khả thi'
+				ROLLBACK TRAN
+				RETURN 1
+			END
 
-GO
+		WAITFOR DELAY '0:0:05'
 
-CREATE PROC SP_LapHopDong_DocThongBao	
-@MaSoThue int
-AS
-SET TRAN ISOLATION LEVEL serializable
-BEGIN TRAN
-	BEGIN TRY
-	    INSERT INTO HopDong(MaSoThue) VALUES (@MaSoThue)
-		WAITFOR DELAY '00:00:05'
-		SELECT NoiDung
-		FROM ThongBao
-		WHERE MaSoThue = @MaSoThue
-	END TRY
-	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'
-		ROLLBACK TRAN
-		RETURN 1
-	END CATCH
+		update DonHang set TinhTrang = N'Đang Giao',MaTaiXe = @MaTaiXe where @MaDonHang = MaDonHang 
 COMMIT TRAN
