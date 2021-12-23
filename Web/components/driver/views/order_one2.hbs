@@ -1,0 +1,59 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="card">
+            <div class="card-header primary">
+               <h4 class="card-title primary text-center">Order ID: {{one.MaDonHang}}</h4>
+            </div>
+
+            <div class="card-body">
+            <dl class="row">
+              <dt class="col-sm-3">Name:</dt>
+              <dd class="col-sm-9">{{one.TenDonHang}}</dd>
+
+              <dt class="col-sm-3">Product price:</dt>
+              <dd class="col-sm-9">{{one.PhiSanPham}}đ</dd>
+
+              <dt class="col-sm-3">Shipping fee:</dt>
+              <dd class="col-sm-9">{{one.PhiVanChuyen}}đ</dd>
+
+              <dt class="col-sm-3">Customer ID:</dt>
+              <dd class="col-sm-9">{{one.MaKhachHang}}</dd>
+
+              <dt class="col-sm-3">Partner ID:</dt>
+              <dd class="col-sm-9">{{one.MaSoThue}}</dd>
+
+              <dt class="col-sm-3">Address:</dt>
+              <dd class="col-sm-9">{{one.DiaChiGiaoHang}}</dd>
+
+              <dt class="col-sm-3">Payment:</dt>
+              <dd class="col-sm-9">{{one.HinhThucThanhToan}}</dd>
+            </dl>
+
+            <div class="text-center">
+                <form method="POST" action="/driver/order_list2/{{one.MaDonHang}}">
+                   <button class="btn btn-info btn-lg btn-block">
+                    Take this order
+                   </button>
+                </form>
+             </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -12,9 +12,23 @@ export function order_list(req, res) {
   });
 }
 
+export function order_list2(req, res) {
+  const area_id = store.get("user").KhuVucHoatDong;
+  driveModel.getOrder(area_id, (e, data) => {
+    res.render("driver/views/order_list2", { orders: data, area_id });
+  });
+}
+
+
 export function order_one(req, res) {
   driveModel.getOrderByID(req.params.id, (e, data) => {
     res.render("driver/views/order_one", { one: data });
+  });
+}
+
+export function order_one2(req, res) {
+  driveModel.getOrderByID(req.params.id, (e, data) => {
+    res.render("driver/views/order_one2", { one: data });
   });
 }
 
@@ -23,6 +37,13 @@ export function get_order_one(req, res) {
     res.redirect("/driver/order_list")
   });
 }
+
+export function get_order_one2(req, res) {
+  driveModel.get_order_one(req.params.id,store.get("user").MaTaiXe, (e, data) => {
+    res.redirect("/driver/order_list2")
+  });
+}
+
 
 export function received_list(req, res) {
   const area_id = store.get("user").KhuVucHoatDong;
