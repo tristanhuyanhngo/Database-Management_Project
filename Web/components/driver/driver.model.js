@@ -38,7 +38,8 @@ export default {
     try {
       const pool = await db.conn;
       const sqlstring = 
-      "update donhang set mataixe = @varidtx, tinhtrang = N'Đang giao' where madonhang = @varidh ";
+      "EXEC SP_NhanDonHang @varidtx, @varidh";
+      console.log(sqlstring)
       return await pool
         .request()
         .input("varidtx", db.sql.Int, idtx)
@@ -55,7 +56,8 @@ export default {
   async getDriverOrder(id, result) {
     try {
       const pool = await db.conn;
-      const sqlstring = "select * from donhang where MaTaiXe = @varid";
+      const sqlstring = 
+      "select * from donhang where MaTaiXe = @varid";
       return await pool
         .request()
         .input("varid", db.sql.Int, id)

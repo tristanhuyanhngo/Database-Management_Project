@@ -1,6 +1,6 @@
 ﻿--Xem sản phẩm
 DECLARE @RT INT
-EXEC @RT = SP_XemSanPham '1'
+EXEC @RT = SP_XemSanPham '8'
 IF @RT = 1
 	PRINT N'XEM THẤT BẠI'
 ELSE

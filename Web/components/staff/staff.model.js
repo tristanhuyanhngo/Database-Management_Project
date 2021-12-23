@@ -66,12 +66,11 @@ export default {
 
   async updateDate(id, date, result) {
     try {
-      console.log(date)
       if(date!=null&&date!=undefined)
       {
         const pool = await db.conn;
         const sqlstring =
-          "SP_GiaHanHopDong varID, @varDate";
+          "EXEC SP_GiaHanHopDong @varID, @varDate";
         return pool
           .request()
           .input("varDate", db.sql.Date, date)

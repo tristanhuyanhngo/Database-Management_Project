@@ -1,5 +1,4 @@
 ﻿CREATE PROC SP_ThemSanPham(
-	@MaSP int, 
 	@MaChiNhanh int, 
 	@SoLuongTon int,
 	@GiaCa int,
@@ -20,7 +19,7 @@ BEGIN TRAN
 				RETURN 1
 			END
 
-		INSERT SanPham VALUES(@MaSP, @MaChiNhanh, @SoLuongTon, @GiaCa, @TenSP)
+		INSERT SanPham VALUES(@MaChiNhanh, @SoLuongTon, @GiaCa, @TenSP)
 	END TRY
 	BEGIN CATCH
 		PRINT N'LỖI HỆ THỐNG'
@@ -45,7 +44,7 @@ BEGIN TRAN
 			END
 		SELECT * FROM SanPham WHERE MaChiNhanh IN (SELECT MaChiNhanh FROM ChiNhanh WHERE MaSoThue=@MaSoThue)
 		--Khách hàng xem sản phẩm
-		WAITFOR DELAY '0:0:20'
+		WAITFOR DELAY '0:0:05'
 		--Xem lại
 		SELECT * FROM SanPham WHERE MaChiNhanh IN (SELECT MaChiNhanh FROM ChiNhanh WHERE MaSoThue=@MaSoThue)
 		END TRY
