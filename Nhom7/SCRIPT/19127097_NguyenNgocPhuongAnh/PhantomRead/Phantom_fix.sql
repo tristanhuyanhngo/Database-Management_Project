@@ -33,7 +33,7 @@ GO
 CREATE PROC SP_XemSanPham
 	@MaSoThue int
 AS
-
+SET TRAN ISOLATION LEVEL SERIALIZABLE
 BEGIN TRAN
 	BEGIN TRY
 		IF NOT EXISTs(select * from DoiTac where @MaSoThue = MaSoThue)
