@@ -4,13 +4,13 @@ SET TRAN ISOLATION LEVEL Repeatable read
 BEGIN TRAN
 	BEGIN TRY
 	    SELECT * FROM HopDong 
-		WHERE ThoiGianHieuLuc < GETDATE()
+		WHERE ThoiGianHieuLuc < GETDATE() and TinhTrang = N'Đã duyệt'
 
 		WAITFOR DELAY '00:00:05'
 
 		SELECT COUNT(*) as SoLuongHopDongHetHan
 		FROM HopDong
-		WHERE ThoiGianHieuLuc < GETDATE()
+		WHERE ThoiGianHieuLuc < GETDATE() and TinhTrang = N'Đã duyệt'
 	END TRY
 	BEGIN CATCH
 		PRINT N'LỖI HỆ THỐNG'
@@ -19,8 +19,9 @@ BEGIN TRAN
 	END CATCH
 COMMIT TRAN
 --drop proc SP_HopDongHetHang_fix
-go
 --drop proc SP_GiaHanHopDong_fix
+go
+
 CREATE PROC SP_GiaHanHopDong_fix
 	@MaHopDong int,  @new date
 AS

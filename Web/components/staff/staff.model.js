@@ -4,6 +4,7 @@ export default {
   async pendingContract(result) {
     try {
       const pool = await db.conn;
+
       const sqlstring =
         "select * from HopDong where HopDong.TinhTrang = N'Chờ duyệt'";
       return pool.request().query(sqlstring, (e, data) => {
@@ -28,17 +29,17 @@ export default {
     try {
       const pool = await db.conn;
       const sqlstring =
-        "select * from HopDong where HopDong.ThoiGianHieuLuc < getdate() and TinhTrang = N'Đã duyệt' ";
+        "EXEC SP_HopDongHetHang";
       return await pool.request().query(sqlstring, (e, data) => {
-        for (let i = 0; i < data.recordset.length; i++) {
-          if (data.recordset[i].ThoiGianHieuLuc != null) {
-            let dd = data.recordset[i].ThoiGianHieuLuc.getDate();
-            let mm = data.recordset[i].ThoiGianHieuLuc.getMonth() + 1;
-            let yyyy = data.recordset[i].ThoiGianHieuLuc.getFullYear();
-            data.recordset[i].ThoiGianHieuLuc = dd + "-" + mm + "-" + yyyy;
+        for (let i = 0; i < data.recordsets[0].length; i++) {
+          if (data.recordsets[0][i].ThoiGianHieuLuc != null) {
+            let dd = data.recordsets[0][i].ThoiGianHieuLuc.getDate();
+            let mm = data.recordsets[0][i].ThoiGianHieuLuc.getMonth() + 1;
+            let yyyy = data.recordsets[0][i].ThoiGianHieuLuc.getFullYear();
+            data.recordsets[0][i].ThoiGianHieuLuc = dd + "-" + mm + "-" + yyyy;
           }
         }
-        if (data.recordset.length > 0) result(null, data.recordset);
+        if (!e) result(null, data.recordsets);
         else result(true, null);
       });
     } catch {

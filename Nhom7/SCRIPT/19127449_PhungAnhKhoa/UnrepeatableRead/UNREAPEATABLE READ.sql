@@ -1,25 +1,18 @@
-﻿
-CREATE PROC SP_HopDongHetHang
+﻿CREATE PROC SP_HopDongHetHang
 AS
 SET TRAN ISOLATION LEVEL Read committed
 BEGIN TRAN
-	BEGIN TRY
 	    SELECT * FROM HopDong 
-		WHERE ThoiGianHieuLuc < GETDATE()
+		WHERE ThoiGianHieuLuc < GETDATE() and TinhTrang = N'Đã duyệt'
 
 		WAITFOR DELAY '00:00:05'
 
 		SELECT COUNT(*) as SoLuongHopDongHetHan
 		FROM HopDong
-		WHERE ThoiGianHieuLuc < GETDATE()
-	END TRY
-	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'
-		ROLLBACK TRAN
-		RETURN
-	END CATCH
+		WHERE ThoiGianHieuLuc < GETDATE() and TinhTrang = N'Đã duyệt'
 COMMIT TRAN
-
+--drop proc SP_HopDongHetHang
+--drop proc SP_GiaHanHopDong
 go
 
 CREATE PROC SP_GiaHanHopDong
@@ -27,7 +20,6 @@ CREATE PROC SP_GiaHanHopDong
 AS
 SET TRAN ISOLATION LEVEL Read committed
 BEGIN TRAN
-	BEGIN TRY
 		IF NOT EXISTS(select * from HopDong where MaHopDong = @MaHopDong)
 			BEGIN
 				PRINT N'HopDong' + CAST(@MaHopDong AS VARCHAR(10)) + N' Không Tồn Tại'
@@ -35,10 +27,4 @@ BEGIN TRAN
 				RETURN 1
 			END
 		UPDATE HopDong SET ThoiGianHieuLuc = @new WHERE MaHopDong = @MaHopDong
-	END TRY
-	BEGIN CATCH
-		PRINT N'LỖI HỆ THỐNG'
-		ROLLBACK TRAN
-		RETURN 1	
-	END CATCH
 COMMIT TRAN

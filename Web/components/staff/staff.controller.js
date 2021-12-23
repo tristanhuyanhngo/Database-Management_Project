@@ -12,7 +12,7 @@ export function pendingContract(req, res) {
 
 export function renewalContract(req, res) {
   staffModel.renewalContract((e, data) => {
-    res.render("staff/views/contract_renew", { data });
+    res.render("staff/views/contract_renew", { data:data[0], DHHH:data[1][0].SoLuongHopDongHetHan });
   });
 }
 export function updateState(req, res) {
