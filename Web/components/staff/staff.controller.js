@@ -15,6 +15,13 @@ export function renewalContract(req, res) {
     res.render("staff/views/contract_renew", { data:data[0], DHHH:data[1][0].SoLuongHopDongHetHan });
   });
 }
+
+export function renewalContract2(req, res) {
+  staffModel.renewalContract2((e, data) => {
+    res.render("staff/views/contract_renew", { data:data[0], DHHH:data[1][0].SoLuongHopDongHetHan });
+  });
+}
+
 export function updateState(req, res) {
   staffModel.updateState(req.query.idVal, (e, data) => {
     res.redirect("/staff/review_contract/");
@@ -23,6 +30,12 @@ export function updateState(req, res) {
 
 export function updateDate(req, res) {
   staffModel.updateDate(req.query.idVal, req.query.retVal, (e, data) => {
+    res.redirect("/staff/extend_contract/");
+  });
+}
+
+export function updateDate2(req, res) {
+  staffModel.updateDate2(req.query.idVal, req.query.retVal, (e, data) => {
     res.redirect("/staff/extend_contract/");
   });
 }

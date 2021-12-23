@@ -53,6 +53,43 @@ export default {
     }
   },
 
+
+  async get_order_one2(iddh,idtx, result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring = 
+      "EXEC SP_NhanDonHang_deadlock @varidtx, @varidh";
+      return await pool
+        .request()
+        .input("varidtx", db.sql.Int, idtx)
+        .input("varidh", db.sql.Int, iddh)
+        .query(sqlstring, (e, data2) => {
+          if (!e) result(null, e);
+          else result(true,e);
+        });
+    } catch(e) {
+      result(true, e);
+    }
+  },
+
+  async get_order_one3(iddh,idtx, result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring = 
+      "EXEC SP_NhanDonHang_fix @varidtx, @varidh";
+      return await pool
+        .request()
+        .input("varidtx", db.sql.Int, idtx)
+        .input("varidh", db.sql.Int, iddh)
+        .query(sqlstring, (e, data2) => {
+          if (!e) result(null, e);
+          else result(true,e);
+        });
+    } catch(e) {
+      result(true, e);
+    }
+  },
+
   async getDriverOrder(id, result) {
     try {
       const pool = await db.conn;

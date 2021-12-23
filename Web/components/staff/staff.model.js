@@ -47,6 +47,28 @@ export default {
     }
   },
 
+  async renewalContract2(result) {
+    try {
+      const pool = await db.conn;
+      const sqlstring =
+        "EXEC SP_HopDongHetHang_fix";
+      return await pool.request().query(sqlstring, (e, data) => {
+        for (let i = 0; i < data.recordsets[0].length; i++) {
+          if (data.recordsets[0][i].ThoiGianHieuLuc != null) {
+            let dd = data.recordsets[0][i].ThoiGianHieuLuc.getDate();
+            let mm = data.recordsets[0][i].ThoiGianHieuLuc.getMonth() + 1;
+            let yyyy = data.recordsets[0][i].ThoiGianHieuLuc.getFullYear();
+            data.recordsets[0][i].ThoiGianHieuLuc = dd + "-" + mm + "-" + yyyy;
+          }
+        }
+        if (!e) result(null, data.recordsets);
+        else result(true, null);
+      });
+    } catch {
+      result(true, null);
+    }
+  },
+
   async updateState(id, result) {
     try {
       const pool = await db.conn;
@@ -71,6 +93,29 @@ export default {
         const pool = await db.conn;
         const sqlstring =
           "EXEC SP_GiaHanHopDong @varID, @varDate";
+        return pool
+          .request()
+          .input("varDate", db.sql.Date, date)
+          .input("varID", db.sql.Int, id)
+          .query(sqlstring, (e, data) => {
+            if (!e) result(null, "thành công");
+            else result(true, null);
+          });
+      }
+      else result(true, null);
+     
+    } catch {
+      result(true, null);
+    }
+  },
+
+  async updateDate2(id, date, result) {
+    try {
+      if(date!=null&&date!=undefined)
+      {
+        const pool = await db.conn;
+        const sqlstring =
+          "EXEC SP_GiaHanHopDong_fix @varID, @varDate";
         return pool
           .request()
           .input("varDate", db.sql.Date, date)
