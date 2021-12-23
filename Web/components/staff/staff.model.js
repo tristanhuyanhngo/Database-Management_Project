@@ -71,7 +71,7 @@ export default {
       {
         const pool = await db.conn;
         const sqlstring =
-          "update hopdong set ThoiGianHieuLuc = @varDate where MaHopDong = @varID";
+          "SP_GiaHanHopDong varID, @varDate";
         return pool
           .request()
           .input("varDate", db.sql.Date, date)
