@@ -2,7 +2,7 @@
 select DonHang.* from DonHang,TaiXe where TinhTrang = N'Chờ' and KhuVuc = KhuVucHoatDong and TaiXe.MaTaiXe = '16' and DonHang.MaTaiXe is null
 -- đặt đơn hàng
 DECLARE @RT INT
-EXEC @RT = SP_NhanDonHang_deadlock '16','13'
+EXEC @RT = SP_NhanDonHang_deadlock '16','14'
 --EXEC @RT = SP_NhanDonHang_deadlock_fix '16','14'
 IF @RT = 1
 	PRINT N'THÊM THẤT BẠI'
