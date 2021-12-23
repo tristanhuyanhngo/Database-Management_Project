@@ -1,26 +1,23 @@
-﻿CREATE PROC SP_XemNhanDonHang
-	@MaTaiXe int,  @MaDonHang int, @KhuVuc nvarchar(50)
+﻿CREATE PROC SP_NhanDonHang_deadlock
+	@MaTaiXe int,  @MaDonHang int
 AS
-SET TRAN ISOLATION LEVEL SERIALIZABLE
+SET TRAN ISOLATION LEVEL REPEATABLE READ
 BEGIN TRAN
-		IF NOT EXISTS(select * from TaiXe where MaTaiXe = @MaTaiXe)
+		IF NOT EXISTs(select * from TaiXe where MaTaiXe = @MaTaiXe)
 			BEGIN
-				PRINT N'Tài xế ' + CAST(@MaTaiXe AS VARCHAR(10)) + N' không tồn tại'
+				PRINT N'Tài Xế' + CAST(@MaTaiXe AS VARCHAR(10)) + N' Không Tồn Tại'
 				ROLLBACK TRAN
 				RETURN 1
 			END
-		IF NOT EXISTS(select * from DonHang,TaiXe where DonHang.KhuVuc = Taixe.KhuVucHoatDong and Taixe.MaTaiXe = @MaTaiXe and TinhTrang = N'Chờ' and MaDonHang = @MaDonHang)
+		IF NOT EXISTS(select * from DonHang,TaiXe where DonHang.KhuVuc = Taixe.KhuVucHoatDong and DonHang.MaTaiXe is null
+		and Taixe.MaTaiXe = @MaTaiXe and TinhTrang = N'Chờ' and MaDonHang = @MaDonHang)
 			BEGIN
 				PRINT N'Đặt hàng không khả thi'
 				ROLLBACK TRAN
 				RETURN 1
 			END
-		--Cho tài xế xem những đơn hàng trong khu vực của mình
-		SELECT * FROM DonHang WHERE KhuVuc = @KhuVuc
-		--Lựa đơn
-		WAITFOR DELAY '0:0:010'
-		--Chọn 1 đơn để nhận
-		update DonHang set TinhTrang = N'Đang giao' where @MaDonHang = MaDonHang 
-		update DonHang set MaTaiXe = @MaTaiXe where @MaDonHang = MaDonHang 
+
+		WAITFOR DELAY '0:0:05'
+
+		update DonHang set TinhTrang = N'Đang Giao',MaTaiXe = @MaTaiXe where @MaDonHang = MaDonHang 
 COMMIT TRAN
-RETURN 0
