@@ -39,6 +39,6 @@ export function mail(req, res) {
 
 export function sendMail(req, res) {
   staffModel.sendMail(req.params.id, req.body.msg, (e, data) => {
-    res.redirect("/");
+    res.redirect("/staff/extend_contract");
   });
 }
