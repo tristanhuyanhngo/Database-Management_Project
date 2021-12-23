@@ -1,2 +1,8 @@
 ﻿--Xem sản phẩm
-DECLARE @RT INTEXEC @RT = SP_XemSanPham '1'IF @RT = 1	PRINT N'XEM THẤT BẠI'ELSE	PRINT N'XEM THÀNH CÔNG'
+DECLARE @RT INT
+EXEC @RT = SP_XemSanPham '1'
+IF @RT = 1
+	PRINT N'XEM THẤT BẠI'
+ELSE
+	PRINT N'XEM THÀNH CÔNG'
+

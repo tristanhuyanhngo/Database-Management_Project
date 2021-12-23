@@ -5,7 +5,6 @@
 	@GiaCa int,
 	@TenSP varchar(50))
 AS
---SET TRAN ISOLATION LEVEL REPEATABLE READ
 BEGIN TRAN
 	BEGIN TRY
 		IF NOT EXISTs(select * from ChiNhanh where MaChiNhanh = @MaChiNhanh)
@@ -35,7 +34,7 @@ GO
 CREATE PROC SP_XemSanPham
 	@MaSoThue int
 AS
---SET TRAN ISOLATION LEVEL READ UNCOMMITED
+SET TRAN ISOLATION LEVEL SERIALIZABLE
 BEGIN TRAN
 	BEGIN TRY
 		IF NOT EXISTs(select * from DoiTac where @MaSoThue = MaSoThue)
