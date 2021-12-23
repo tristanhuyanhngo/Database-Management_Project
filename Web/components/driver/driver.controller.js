@@ -19,9 +19,8 @@ export function order_one(req, res) {
 }
 
 export function get_order_one(req, res) {
-  console.log(req.params.id)
   driveModel.get_order_one(req.params.id,store.get("user").MaTaiXe, (e, data) => {
-    res.redirect("/driver")
+    res.redirect("/driver/order_list")
   });
 }
 
@@ -35,5 +34,11 @@ export function received_list(req, res) {
 export function received_one(req, res) {
   driveModel.getOrderByID(req.params.id, (e, data) => {
     res.render("driver/views/received_one", { one: data });
+  });
+}
+
+export function change_received_one(req, res) {
+  driveModel.change_received_one(req.params.id,req.body.state, (e, data) => {
+    res.redirect("/driver/received_list")
   });
 }
