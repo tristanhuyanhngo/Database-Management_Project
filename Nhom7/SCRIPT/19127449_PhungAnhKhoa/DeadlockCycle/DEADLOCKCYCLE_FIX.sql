@@ -1,8 +1,9 @@
 ﻿CREATE PROC SP_LapHopDong_DocThongBao_fix
 @MaSoThue int
 AS
+SET TRAN ISOLATION LEVEL Read Uncommitted
 BEGIN TRAN
-	INSERT INTO HopDong with(TabLockX) (MaSoThue)  VALUES (@MaSoThue)
+	INSERT INTO HopDong (MaSoThue)  VALUES (@MaSoThue)
 
 	WAITFOR DELAY '00:00:05'
 
@@ -16,8 +17,9 @@ GO
 CREATE PROC SP_ThongBao_HopDong_fix
 	@NoiDung nvarchar(50), @MaSoThue int
 AS
+SET TRAN ISOLATION LEVEL Read Uncommitted
 BEGIN TRAN
-	INSERT INTO ThongBao  with(TabLockX) (NoiDung,MasoThue) VALUES (@NoiDung,@MaSoThue) 
+	INSERT INTO ThongBao (NoiDung,MasoThue) VALUES (@NoiDung,@MaSoThue) 
 	WAITFOR DELAY '00:00:05'
-	select * from hopdong  with(TabLockX)
+	select * from hopdong  
 COMMIT TRAN
