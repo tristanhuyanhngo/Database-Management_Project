@@ -1,4 +1,7 @@
-﻿--B2: Xuất số lượng hợp đồng hết hạn
---EXEC SP_HopDongHetHang
+﻿USE HTDCHO
+go
 
-EXEC SP_HopDongHetHang_fix
+--B2: Xuất số lượng hợp đồng hết hạn
+EXEC SP_HopDongHetHang
+
+--EXEC SP_HopDongHetHang_fix

@@ -279,7 +279,7 @@ BEGIN
 
 	declare @dhhn INT
 	SELECT @dhhn = SoLuongDonHangMoiNgay FROM dbo.DoiTac, Inserted WHERE Inserted.MaSoThue = dbo.DoiTac.MaSoThue
-
+	WAITFOR DELAY '0:0:01'
 	IF (@soDH > @dhhn)
 	BEGIN
 	    PRINT N'Không thể đặt thêm đơn hàng vì đã vượt quá số lượng đơn của đối tác'

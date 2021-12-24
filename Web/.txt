@@ -1,9 +1,0 @@
-kiểm tra hợp dồng của Nhân viên
-Thông báo của nhân viên
-Lập hợp đồng của đối tác
-xem danh sách sản phẩm của đối tác
-xem danh sách đơn hàng của tài xế
-nhân viên: đăng ký, đăng nhập, gia hạn hợp đồng, xác nhận hợp đồng, viết thông báo
-Tài xế: đăng ký, đăng nhập, xem đơn hàng chưa đc nhận vs nhận đơn hàng, chỉnh các đơn hàng đang giao
-Khách hàng: đăng ký, đăng nhập, chọn đối tác để xem sản phẩm, đặt hàng, theo dõi đơn hàng
-đối tác: đăng ký, thêm chi nhánh, lập hợp đồng, thêm xoá sửa sản phẩm

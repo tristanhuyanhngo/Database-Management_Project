@@ -1,4 +1,7 @@
-﻿CREATE PROC SP_HopDongHetHang_fix
+﻿USE HTDCHO
+go
+
+CREATE PROC SP_HopDongHetHang_fix
 AS
 SET TRAN ISOLATION LEVEL Repeatable read
 BEGIN TRAN

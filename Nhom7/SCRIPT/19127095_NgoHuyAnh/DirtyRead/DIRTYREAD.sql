@@ -1,4 +1,6 @@
-﻿
+﻿USE HTDCHO
+go
+
 CREATE PROC SP_DatHang
 	@MaSoThue int,  @MaKhachHang int, @KhuVuc nvarchar(50)
 AS
@@ -31,6 +33,7 @@ BEGIN TRAN
 		return 1
 	END
 COMMIT TRAN
+
 
 go 
 

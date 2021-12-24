@@ -1,4 +1,7 @@
-﻿CREATE PROC SP_LapHopDong_DocThongBao_fix
+﻿USE HTDCHO
+go
+
+CREATE PROC SP_LapHopDong_DocThongBao_fix
 @MaSoThue int
 AS
 SET TRAN ISOLATION LEVEL Read Uncommitted

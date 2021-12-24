@@ -1,4 +1,7 @@
-﻿CREATE PROC SP_ThemSanPham(
+﻿use HTDCHO
+go
+
+CREATE PROC SP_ThemSanPham(
 	@MaChiNhanh int, 
 	@SoLuongTon int,
 	@GiaCa int,
@@ -9,12 +12,6 @@ BEGIN TRAN
 		IF NOT EXISTs(select * from ChiNhanh where MaChiNhanh = @MaChiNhanh)
 			BEGIN
 				PRINT N'Chi nhánh ' + CAST(@MaChiNhanh AS VARCHAR(10)) + N' không tồn tại'
-				ROLLBACK TRAN
-				RETURN 1
-			END
-		IF EXISTS(select * from SanPham where @MaSP=MaSP)
-		BEGIN
-				PRINT N'Sản phẩm đã tồn tại'
 				ROLLBACK TRAN
 				RETURN 1
 			END

@@ -1,4 +1,7 @@
-﻿CREATE PROC SP_LapHopDong_DocThongBao	
+﻿USE HTDCHO
+go
+
+CREATE PROC SP_LapHopDong_DocThongBao	
 @MaSoThue int
 AS
 SET TRAN ISOLATION LEVEL Repeatable Read

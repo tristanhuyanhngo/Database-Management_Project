@@ -1,4 +1,7 @@
-﻿CREATE PROC SP_NhanDonHang
+﻿use HTDCHO
+go
+
+CREATE PROC SP_NhanDonHang
 	@MaTaiXe int,  @MaDonHang int
 AS
 --SET TRAN ISOLATION LEVEL REPEATABLE READ

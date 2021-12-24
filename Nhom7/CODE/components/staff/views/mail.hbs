@@ -1,0 +1,45 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <h2 class="font-italic">
+        <p class="text-center">Send a notification to partner {{partner}}</p>
+      </h2>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+      <div class="col"></div>
+        <div class="col">
+          <div class="card mx-auto">
+            <h5 class="card-header">Notification's content</h5>
+            <div class="card-body">
+            <p>Dear <strong>{{partner}}</strong>,<p>
+            <p>We have <strong>{{msg}}</strong> your contract (ID: <strong>{{idhd}}</strong>).</p>
+            <form action="/staff/mail/{{iddt}}" method="POST"> 
+              <textarea name="msg" rows="3" cols="70" type="text"></textarea>
+              <div class="text-right">
+                <button type="submit" class="btn btn-primary ">Send</button>
+              </div>
+            </form>
+        
+            </div>
+            <!-- /.card-header -->
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <div class="col"></div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

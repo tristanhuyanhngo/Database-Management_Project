@@ -1,4 +1,6 @@
-﻿
+﻿USE HTDCHO
+go
+
 CREATE PROC SP_DatHang_fix
 	@MaSoThue int,  @MaKhachHang int, @KhuVuc nvarchar(50)
 AS

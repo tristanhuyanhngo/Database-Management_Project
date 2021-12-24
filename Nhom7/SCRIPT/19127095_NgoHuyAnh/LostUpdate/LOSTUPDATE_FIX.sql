@@ -1,4 +1,7 @@
-﻿CREATE PROC SP_NhanDonHang_fix
+﻿use HTDCHO
+go
+
+CREATE PROC SP_NhanDonHang_fix
 	@MaTaiXe int, @MaDonHang int
 AS
 BEGIN TRAN
