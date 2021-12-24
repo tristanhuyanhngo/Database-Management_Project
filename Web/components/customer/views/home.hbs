@@ -7,7 +7,7 @@
           </h4>
           <div class="list-group list-group-flush">
             <a href="#" class="list-group-item list-group-item-action">Order Products</a>
-            <a href="/customer/order_list" class="list-group-item list-group-item-action">View Products Orders</a>
+            <a href="/customer/order_list/:{{this.info.MaKhachHang}}" class="list-group-item list-group-item-action">View Products Orders</a>
           </div>
         </div>
         <div class="card mt-3">
@@ -29,8 +29,11 @@
             Customer's Profile
           </h4>
           <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
+            <h4 class="card-title">{{this.info.HoTen}}</h4>
+            <p class="card-text"><b>Mã khách hàng :</b> {{this.info.MaKhachHang}}</p>
+            <p class="card-text"><b>Số điện thoại :</b> {{this.info.SDT}}</p>
+            <p class="card-text"><b>Địa chỉ nhà   :</b> {{this.info.DiaChi}}</p>
+            <p class="card-text"><b>Email liên lạc:</b> {{this.info.Email}}</p>
           </div>
           <div class="card-footer text-muted">
             Footer
