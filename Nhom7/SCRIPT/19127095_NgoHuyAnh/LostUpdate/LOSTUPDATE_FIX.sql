@@ -21,7 +21,7 @@ BEGIN TRAN
 			END
 
 		WAITFOR DELAY '0:0:05'
-		if (exists(select * from donhang where madonhang = @MaDonHang and TinhTrang = N'Chờ'))
+		if (exists(select * from donhang where madonhang = @MaDonHang and TinhTrang = N'Chờ')) -- wait-die
 		begin
 			update DonHang set TinhTrang = N'Đang Giao',MaTaiXe = @MaTaiXe where @MaDonHang = MaDonHang 
 		end

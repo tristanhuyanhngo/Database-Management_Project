@@ -3,8 +3,8 @@ select DonHang.* from DonHang,TaiXe where TinhTrang = N'Chờ' and KhuVuc = KhuV
 
 -- đặt đơn hàng
 DECLARE @RT INT
-EXEC @RT = SP_NhanDonHang_deadlock '17','15'
---EXEC @RT = SP_NhanDonHang_deadlock_fix '17','13'
+--EXEC @RT = SP_NhanDonHang_deadlock '17','20'
+EXEC @RT = SP_NhanDonHang_deadlock_fix '17','21'
 IF @RT = 1
 	PRINT N'THÊM THẤT BẠI'
 ELSE
